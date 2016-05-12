@@ -28,7 +28,7 @@ AUTHOR_ALIAS = {
 #RSS_ICONS = ['rss']
 MENUITEMS_AFTER = (('Comments', '/pages/comments.html'), ('Random', '/random.html'), ('RSS', '/feeds/all.atom.xml'),)
 
-GITHUB_SOURCE = 'https://github.com/xuxiaodong/linuxtoy.org/blob/master/content'
+GITHUB_SOURCE = 'https://github.com/LinuxTOY/linuxtoy.org/blob/master/content'
 
 DISQUS_SITENAME = 'linuxtoy'
 GOOGLE_ANALYTICS = 'UA-349050-2'
