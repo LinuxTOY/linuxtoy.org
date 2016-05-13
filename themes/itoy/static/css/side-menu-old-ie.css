@@ -173,7 +173,7 @@ The content `<div>` is where all your content goes.
 
 pre,
 code {
-    font-family: "DejaVu Sans Mono", Consolas, Courier, monospace;
+    font-family: "Source Code Pro", "DejaVu Sans Mono", Consolas, Courier, monospace;
     font-size: 90%;
     padding: 0.2em 0.4em;
     color: #333;
@@ -242,6 +242,10 @@ blockquote .small:before {
 }
 .nav-right {
     float: right;
+}
+
+.about {
+    font-size: 90%;
 }
 
 /*
