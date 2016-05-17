@@ -22,7 +22,7 @@ DNSDiag 包含 dnsping、dnstraceroute、dnseval 三个工具。
 
 **dnsping**
 
-又一个跟 `ping` 类似的工具，针对 HTTP 的可参考 `[httping]({filename}/httping.md)`。dnsping 发送 DNS 查询来 ping DNS 服务器：
+又一个跟 `ping` 类似的工具，针对 HTTP 的可参考 [httping]({filename}/httping.md)。dnsping 发送 DNS 查询来 ping DNS 服务器：
 
 ```
 ./dnsping -s 8.8.8.8 -c 5 linuxtoy.org
