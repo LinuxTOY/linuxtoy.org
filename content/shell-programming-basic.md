@@ -10,6 +10,8 @@ Via: zorro|http://liwei.life/2016/05/16/69/
 
 <!-- PELICAN_END_SUMMARY -->
 
+**目录**
+
 + [前言](#id1)
 + [if 分支结构](#id2)
 + [“当”、“直到”循环结构](#id3)
@@ -47,13 +49,13 @@ bash 在解析字符的时候，对待“`;`”跟看见回车是一样的行为
 ```bash
 if list
 then
-	list
+    list
 elif list
 then
-	list
+    list
 ...
 else
-	list
+    list
 fi
 ```
 
@@ -99,23 +101,23 @@ ls: cannot access '/123': No such file or directory
 #!/bin/bash
 
 DIR="/etc"
-＃第一种写法
+#第一种写法
 ls -l $DIR &> /dev/null
 ret=$?
 
 if [ $ret -eq 0 ]
 then
-		echo "$DIR is exist!" 
+        echo "$DIR exists!"
 else
-    	echo "$DIR is not exist!"
+        echo "$DIR does not exist!"
 fi
 
 #第二种写法
 if ls -l $DIR &> /dev/null
 then
-        echo "$DIR is exist!" 
+        echo "$DIR exists!"
 else
-        echo "$DIR is not exist!"
+        echo "$DIR does not exist!"
 fi
 ```
 
@@ -124,7 +126,7 @@ fi
 ```bash
 #正确的写法
 if [ $ret -eq 0 ]
-＃错读的写法
+#错读的写法
 if [$ret -eq 0]
 ```
 
@@ -157,16 +159,16 @@ until list-1; do list-2; done
 ```bash
 while list-1
 do
-	list-2
+    list-2
 done
 
 until list-1
 do
-	list-2
+    list-2
 done
 ```
 
-还是跟 `if` 语句一样，我们应该明白对于 `while` 和 `until` 的条件的含义，仍然是 `list` 。其判断条件是 `list` ，其执行结构也是 `list`。理解了上面 `if` 的讲解，我想这里应该不用复述了。我们用 `while` 和 `unitl` 来产生一个 `0-99` 的数字序列： 
+还是跟 `if` 语句一样，我们应该明白对于 `while` 和 `until` 的条件的含义，仍然是 `list` 。其判断条件是 `list` ，其执行结构也是 `list`。理解了上面 `if` 的讲解，我想这里应该不用复述了。我们用 `while` 和 `unitl` 来产生一个 `0-99` 的数字序列：
 
 `while` 版：
 
@@ -177,8 +179,8 @@ count=0
 
 while [ $count -le 100 ]
 do
-	echo $count
-	count=$[$count+1]
+    echo $count
+    count=$[$count+1]
 done
 ```
 
@@ -191,8 +193,8 @@ count=0
 
 until ! [ $count -le 100 ]
 do
-	echo $count
-	count=$[$count+1]
+    echo $count
+    count=$[$count+1]
 done
 ```
 
@@ -237,19 +239,19 @@ INTERVAL=1
 
 while true
 do
-	while ping -c 1 $IPADDR &> /dev/null
-	do
-		sleep $INTERVAL
-	done
+    while ping -c 1 $IPADDR &> /dev/null
+    do
+        sleep $INTERVAL
+    done
 
-	echo "$IPADDR ping error! " 1>&2
+    echo "$IPADDR ping error! " 1>&2
 
-	until ping -c 1 $IPADDR &> /dev/null
-	do
-		sleep $INTERVAL
-	done
+    until ping -c 1 $IPADDR &> /dev/null
+    do
+        sleep $INTERVAL
+    done
 
-	echo "$IPADDR ping ok!"
+    echo "$IPADDR ping ok!"
 done
 ```
 
@@ -289,15 +291,15 @@ esac
 #!/bin/bash
 
 case $1 in
-	(zorro)
-	echo "hello zorro!"
-	;;
-	(jerry)
-	echo "hello jerry!"
-	;;
-	(*)
-	echo "get out!"
-	;;
+    (zorro)
+    echo "hello zorro!"
+    ;;
+    (jerry)
+    echo "hello jerry!"
+    ;;
+    (*)
+    echo "get out!"
+    ;;
 esac
 ```
 
@@ -307,15 +309,15 @@ esac
 #!/bin/bash
 
 case $1 in
-	zorro)
-	echo "hello zorro!"
-	;;
-	jerry)
-	echo "hello jerry!"
-	;;
-	*)
-	echo "get out!"
-	;;
+    zorro)
+    echo "hello zorro!"
+    ;;
+    jerry)
+    echo "hello jerry!"
+    ;;
+    *)
+    echo "get out!"
+    ;;
 esac
 ```
 
@@ -325,12 +327,12 @@ esac
 #!/bin/bash
 
 case $1 in
-	zorro|jerry)
-	echo "hello $1!"
-	;;
-	*)
-	echo "get out!"
-	;;
+    zorro|jerry)
+    echo "hello $1!"
+    ;;
+    *)
+    echo "get out!"
+    ;;
 esac
 ```
 
@@ -404,7 +406,7 @@ test/a.conf test/b.conf
 
 ```bash
 [zorro@zorrozou-pc0 bash]$ shopt globstar
-globstar       	off
+globstar        off
 ```
 
 打开 `globstar`：
@@ -412,7 +414,7 @@ globstar       	off
 ```bash
 [zorro@zorrozou-pc0 bash]$ shopt -s globstar
 [zorro@zorrozou-pc0 bash]$ shopt globstar
-globstar       	on
+globstar        on
 ```
 
 使用 `**` 匹配：
@@ -429,11 +431,11 @@ test/a.conf test/b.conf test/d/1.conf test/d/2.conf
 ```bash
 [zorro@zorrozou-pc0 bash]$ shopt -u globstar
 [zorro@zorrozou-pc0 bash]$ shopt  globstar
-globstar       	off
+globstar        off
 
 [zorro@zorrozou-pc0 bash]$ echo test/**/*.conf
 test/d/1.conf test/d/2.conf
-[zorro@zorrozou-pc0 bash]$ 
+[zorro@zorrozou-pc0 bash]$
 [zorro@zorrozou-pc0 bash]$ echo test/**
 test/1 test/2 test/3 test/4 test/a test/a.conf test/b test/b.conf test/c test/d
 ```
@@ -465,12 +467,12 @@ test/c:
 
 if [ $1 = "zorro" ] && [ $2 = "zorro" ]
 then
-	echo "ok"
+    echo "ok"
 elif [ $1$2 = "jerryjerry" ]
 then
-	echo "ok"
+    echo "ok"
 else
-	echo "auth failed!"
+    echo "auth failed!"
 fi
 ```
 
@@ -480,12 +482,12 @@ fi
 #!/bin/bash
 
 case $1$2 in
-	zorrozorro|jerryjerry)
-	echo "ok!"
-	;;
-	*)
-	echo "auth failed!"
-	;;
+    zorrozorro|jerryjerry)
+    echo "ok!"
+    ;;
+    *)
+    echo "auth failed!"
+    ;;
 esac
 ```
 
@@ -498,12 +500,12 @@ esac
 
 if [ $1 = "zorro" ] && [ $2 = "zorro" ]
 then
-	echo "ok"
+    echo "ok"
 elif [ $1:$2 = "jerry:jerry" ]
 then
-	echo "ok"
+    echo "ok"
 else
-	echo "auth failed!"
+    echo "auth failed!"
 fi
 ```
 
@@ -513,12 +515,12 @@ fi
 #!/bin/bash
 
 case $1x$2 in
-	zorro:zorro|jerry:jerry)
-	echo "ok!"
-	;;
-	*)
-	echo "auth failed!"
-	;;
+    zorro:zorro|jerry:jerry)
+    echo "ok!"
+    ;;
+    *)
+    echo "auth failed!"
+    ;;
 esac
 ```
 
@@ -670,7 +672,7 @@ for (( expr1 ; expr2 ; expr3 )) ; do list ; done
 
 for ((count=0;count<100;count++))
 do
-	echo $count
+    echo $count
 done
 ```
 
@@ -689,19 +691,19 @@ select name [ in word ] ; do list ; done
 
 select i in a b c d
 do
-	echo $i
+    echo $i
 done
 ```
 
 这个程序执行的效果是：
 
 ```bash
-[zorro@zorrozou-pc0 bash]$ ./select.sh 
+[zorro@zorrozou-pc0 bash]$ ./select.sh
 1) a
 2) b
 3) c
 4) d
-#? 
+#?
 ```
 
 你会发现 `select` 给你构造了一个交互菜单，索引为 1 ， 2 ， 3 ， 4 。对应的名字就是程序中的 a ， b ， c ， d 。之后我们就可以在后面输入相应的数字索引，选择要 `echo` 的内容：
@@ -742,24 +744,24 @@ d
 
 select i in a b c d
 do
-	case $i in
-		a)
-		echo "Your choice is a"
-		;;
-		b)
-		echo "Your choice is b"
-		;;
-		c)
-		echo "Your choice is c"
-		;;
-		d)
-		echo "Your choice is d"
-		;;
-		*)
-		echo "Wrong choice! exit!"
-		exit
-		;;
-	esac
+    case $i in
+        a)
+        echo "Your choice is a"
+        ;;
+        b)
+        echo "Your choice is b"
+        ;;
+        c)
+        echo "Your choice is c"
+        ;;
+        d)
+        echo "Your choice is d"
+        ;;
+        *)
+        echo "Wrong choice! exit!"
+        exit
+        ;;
+    esac
 done
 ```
 
