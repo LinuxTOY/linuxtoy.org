@@ -5,7 +5,7 @@ body {
 
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
-    font-family: Calluna-Exljbris, Georgia, Times, "Times New Roman", serif;
+    font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
 }
 
 a {
@@ -93,7 +93,7 @@ The content `<div>` is where all your content goes.
 }
 
 .posts {
-    font-family: Calluna-Exljbris, Georgia, "Cambria", serif;
+    font-family: "Noto Serif", Georgia, "Cambria", serif;
 }
 
 .post {
@@ -110,7 +110,7 @@ The content `<div>` is where all your content goes.
     margin-left: 1em;
 }
 .post-description {
-    font-family: Calluna-Exljbris, Georgia, "Cambria", serif;
+    font-family: "Noto Serif", Georgia, "Cambria", serif;
     color: #444;
     line-height: 1.8em;
 }
