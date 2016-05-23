@@ -52,24 +52,24 @@ Via: Zorro|http://liwei.life
 
 我们可以用一个自显示脚本来观察一下这个事情，什么是自显示脚本？无非就是 `#!/bin/cat`，这样文本的所有内容包括 `#!` 行都会交给 `cat` 进行显示：
 
-	[zorro@zorrozou-pc0  bash ]$ cat cat.sh 
+	[zorro@zorrozou-pc0 bash]$ cat cat.sh 
 	#!/bin/cat
 
 	echo "hello world!"
-	[zorro@zorrozou-pc0  bash ]$ ./cat.sh 
+	[zorro@zorrozou-pc0 bash]$ ./cat.sh 
 	#!/bin/cat
 
 	echo "hello world!"
 
 或者自删除脚本：
 
-	[zorro@zorrozou-pc0  bash ]$ cat rm.sh 
+	[zorro@zorrozou-pc0 bash]$ cat rm.sh 
 	#!/bin/rm
 
 	echo "hello world!"
-	[zorro@zorrozou-pc0  bash ]$ chmod +x rm.sh 
-	[zorro@zorrozou-pc0  bash ]$ ./rm.sh 
-	[zorro@zorrozou-pc0  bash ]$ cat rm.sh
+	[zorro@zorrozou-pc0 bash]$ chmod +x rm.sh 
+	[zorro@zorrozou-pc0 bash]$ ./rm.sh 
+	[zorro@zorrozou-pc0 bash]$ cat rm.sh
 	cat: rm.sh: No such file or directory
 
 这就是 `#!` 的本质。
@@ -84,7 +84,7 @@ Via: Zorro|http://liwei.life
 
 bash 在解释命令的时候为了方便一些操作和提高某些效率做了不少特性，包括 `alias` 功能和外部命令路径的 `hash` 功能。bash 还因为某些功能不能做成外部命令，所以必须实现一些内建命令，比如 `cd`、`pwd` 等命令。当然除了内建命令以外，bash 还要实现一些关键字，比如其编程语法结构的 `if` 或是 `while` 这样的功能。实际上作为一种编程语言，bash 还要实现函数功能，我们可以理解为，bash 的函数就是将一堆命令做成一个命令，然后调用执行这个名字，bash 就是去执行事先封装好的那堆命令。
 
-好吧，问题来了：我们已知有一个内建命令叫做 `cd`，如果此时我们又建立一个 `alias` 也叫 `cd`，那么当我在 bash 中敲入 `cd` 并回车之后，bash 究竟是将它当成内建命令解释还是当成 `alias` 解释？同样，如果 `cd` 又是一个外部命令能？如果又是一个 `hash` 索引呢？如果又是一个关键字或函数呢？
+好吧，问题来了：我们已知有一个内建命令叫做 `cd`，如果此时我们又建立一个 `alias` 也叫 `cd`，那么当我在 bash 中敲入 `cd` 并回车之后，bash 究竟是将它当成内建命令解释还是当成 `alias` 解释？同样，如果 `cd` 又是一个外部命令呢？如果又是一个 `hash` 索引呢？如果又是一个关键字或函数呢？
 
 实际上 bash 在做这些功能的时候已经安排好了它们在名字冲突的情况下究竟该先以什么方式解释。优先顺序是：
 
@@ -97,22 +97,22 @@ bash 在解释命令的时候为了方便一些操作和提高某些效率做了
 
 这些 bash 要判断的字符串类型都可以用 `type` 命令进行判断，如：
 
-	[zorro@zorrozou-pc0  bash ]$ type egrep
+	[zorro@zorrozou-pc0 bash]$ type egrep
 	egrep is aliased to `egrep --color=auto'
-	[zorro@zorrozou-pc0  bash ]$ type if
+	[zorro@zorrozou-pc0 bash]$ type if
 	if is a  shell  keyword
-	[zorro@zorrozou-pc0  bash ]$ type pwd
+	[zorro@zorrozou-pc0 bash]$ type pwd
 	pwd is a  shell  builtin
-	[zorro@zorrozou-pc0  bash ]$ type passwd
+	[zorro@zorrozou-pc0 bash]$ type passwd
 	passwd is /usr/bin/passwd
 
 #### 别名 alias {#id4}
 
 bash 提供了一种别名(alias)功能，可以将某一个字符串做成另一个字符串的别名，使用方法如下：
 
-	[zorro@zorrozou-pc0  bash ]$ alias cat='cat -n'
-	[zorro@zorrozou-pc0  bash ]$ cat /etc/passwd
-	     1	root:x:0:0:root:/root:/bin/ bash 
+	[zorro@zorrozou-pc0 bash]$ alias cat='cat -n'
+	[zorro@zorrozou-pc0 bash]$ cat /etc/passwd
+	     1	root:x:0:0:root:/root:/bin/bash 
 	     2	bin:x:1:1:bin:/bin:/usr/bin/nologin
 	     3	daemon:x:2:2:daemon:/:/usr/bin/nologin
 	     4	mail:x:8:12:mail:/var/spool/mail:/usr/bin/nologin
@@ -122,14 +122,14 @@ bash 提供了一种别名(alias)功能，可以将某一个字符串做成另�
 
 这个功能在交互方式进行 bash 操作的时候可以提高不少效率。如果我们发现我们常用到某命令的某个参数的时候，就可以将其做成 `alias`，以后就可以方便使用了。交互 bash 中，我们可以用 `alias` 命令查看目前已经有的 `alias` 列表。可以用 `unalias` 取消这个别名设置：
 
-	[zorro@zorrozou-pc0  bash ]$ alias 
+	[zorro@zorrozou-pc0 bash]$ alias 
 	alias cat='cat -n'
 
-	[zorro@zorrozou-pc0  bash ]$ unalias cat
+	[zorro@zorrozou-pc0 bash]$ unalias cat
 
 `alias` 功能在交互打开的 bash 中是默认开启的，但是在 bash 脚本中是默认关闭的。
 
-	#!/bin/ bash 
+	#!/bin/bash 
 	
 	#shopt -s expand_aliases
 	
@@ -138,13 +138,13 @@ bash 提供了一种别名(alias)功能，可以将某一个字符串做成另�
 
 此时本程序输出：
 
-	[zorro@zorrozou-pc0  bash ]$ ./alias.sh 
+	[zorro@zorrozou-pc0 bash]$ ./alias.sh 
 	adjtime		  cgconfig.conf			docker	     group	    ifplugd	    libao.conf	    mail.rc	     netconfig	     passwd	  request-key.conf   shell s	       udisks2
 	adobe		  cgrules.conf			drirc	...
 	
 使用注释行中的 `shopt -s expand_aliases` 命令可以打开 `alias` 功能支持，我们将这行注释取消掉之后的执行结果为：
 
-	[zorro@zorrozou-pc0  bash ]$ ./alias.sh 
+	[zorro@zorrozou-pc0 bash]$ ./alias.sh 
 	total 1544
 	-rw-r--r-- 1 root    root        44 11月 13 19:53 adjtime
 	drwxr-xr-x 2 root    root      4096 4月  20 09:34 adobe
@@ -159,15 +159,15 @@ bash 提供了一种别名(alias)功能，可以将某一个字符串做成另�
 
 关键字的概念很简单，主要就是 bash 提供的语法。比如 `if`，`while`，`function` 等等。对这些关键字使用 `type` 命令会显示：
 
-    [zorro@zorrozou-pc0  bash ]$ type function
+    [zorro@zorrozou-pc0 bash]$ type function
     function is a  shell  keyword
 
 说明这是一个 keyword。我想这个概念没什么可以解释的了，无非就是 bash 提供的一种语法而已。只是要注意，bash 会在判断 `alias` 之后才来判断字符串是不是个 keyword。就是说，我们还是可以创建一个叫 `if` 的 `alias`，并且在执行的时候，bash 只把它当成 `alias` 看。
 
-	[zorro@zorrozou-pc0  bash ]$ alias if='echo zorro'
-	[zorro@zorrozou-pc0  bash ]$ if
+	[zorro@zorrozou-pc0 bash]$ alias if='echo zorro'
+	[zorro@zorrozou-pc0 bash]$ if
 	zorro
-	[zorro@zorrozou-pc0  bash ]$ unalias if
+	[zorro@zorrozou-pc0 bash]$ unalias if
 
 #### 函数：function {#id6}
 
@@ -196,14 +196,14 @@ bash 在判断完字符串不是一个关键字之后，将会检查其是不是
 
 hash 功能实际上是针对外部命令做的一个功能。刚才我们已经知道了，外部命令都是放在 `$PATH` 变量对应的路径中的可执行文件。bash 在执行一个外部命令时所需要做的操作是：如果发现这个命令是个外部命令就按照 `$PATH` 变量中按照目录路径的顺序，在每个目录中都遍历一遍，看看有没有对应的文件名。如果有，就 `fork`、`exec`、`wait`。我们系统上一般的 `$PATH` 内容如下：
 
-	[zorro@zorrozou-pc0  bash ]$ echo $PATH
+	[zorro@zorrozou-pc0 bash]$ echo $PATH
 	/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/zorro/.local/bin:/home/zorro/bin
 
 当然，很多系统上的 `$PATH` 变量包含的路径可能更多，目录中的文件数量也可能会很多。于是，遍历这些目录去查询文件名的行为就可能比较耗时。于是 bash 提供了一种功能，就是建立一个 hash 表，在第一次找到一个命令的路径之后，对其命令名和对应的路径建立一个 hash 索引。这样下次再执行这个命令的时候，就不用去遍历所有的目录了，只要查询索引就可以更快的找到命令路径，以加快执行程序的速度。
 
 我们可以使用内建命令 `hash` 来查看当前已经建立缓存关系的命令和其命中次数：
 
-	[zorro@zorrozou-pc0  bash ]$ hash
+	[zorro@zorrozou-pc0 bash]$ hash
 	hits	command
 	   1	/usr/bin/flock
 	   4	/usr/bin/chmod
@@ -216,14 +216,14 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 
 这个命令也可以对当前的 `hash` 表进行操作，`-r` 参数用来清空当前 `hash` 表。手工创建一个 `hash`：
 
-	[root@zorrozou-pc0  bash ]# hash -p /usr/sbin/passwd psw
-	[root@zorrozou-pc0  bash ]# psw
+	[root@zorrozou-pc0 bash]# hash -p /usr/sbin/passwd psw
+	[root@zorrozou-pc0 bash]# psw
 	Enter new UNIX password: 
 	Retype new UNIX password: 
 
 此时我们就可以通过执行 `psw` 来执行 `passwd` 命令了。查看更详细的 `hash` 对应关系：
 
-	[root@zorrozou-pc0  bash ]# hash -l
+	[root@zorrozou-pc0 bash]# hash -l
 	builtin hash -p /usr/bin/netdata netdata
 	builtin hash -p /usr/bin/df df
 	builtin hash -p /usr/bin/chmod chmod
@@ -238,8 +238,8 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 
 删除某一个 `hash` 对应：
 
-	[root@zorrozou-pc0  bash ]# hash -d psw
-	[root@zorrozou-pc0  bash ]# hash -l
+	[root@zorrozou-pc0 bash]# hash -d psw
+	[root@zorrozou-pc0 bash]# hash -l
 	builtin hash -p /usr/bin/netdata netdata
 	builtin hash -p /usr/bin/df df
 	builtin hash -p /usr/bin/chmod chmod
@@ -253,13 +253,13 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 	
 显示某一个 `hash` 对应的路径：
 
-	[root@zorrozou-pc0  bash ]# hash -t chmod
+	[root@zorrozou-pc0 bash]# hash -t chmod
 	/usr/bin/chmod
 
 在交互式 bash 操作和 bash 编程中，hash 功能总是打开的，我们可以用 `set +h` 关闭 hash 功能。
 
-	[zorro@zorrozou-pc0  bash ]$ cat hash.sh 
-	#!/bin/ bash 
+	[zorro@zorrozou-pc0 bash]$ cat hash.sh 
+	#!/bin/bash 
 
 	#set +h
 
@@ -273,7 +273,7 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 
 默认打开 hash 的脚本输出：
 
-	[zorro@zorrozou-pc0  bash ]$ ./hash.sh 
+	[zorro@zorrozou-pc0 bash]$ ./hash.sh 
 	hash: hash table empty
 	/usr/bin/useradd
 	Usage: uad [options] LOGIN
@@ -312,7 +312,7 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 
 关闭 hash 之后的输出：
 
-	[zorro@zorrozou-pc0  bash ]$ ./hash.sh 
+	[zorro@zorrozou-pc0 bash]$ ./hash.sh 
 	./hash.sh: line 5: hash: hashing disabled
 	./hash.sh: line 7: hash: hashing disabled
 	./hash.sh: line 9: hash: hashing disabled
@@ -330,13 +330,13 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 
 任何命令执行完之后都有返回码，主要用来判断这个命令是否执行成功。在交互 bash 中，我们可以使用 `$?` 来查看上一个命令的返回码：
 
-	[zorro@zorrozou-pc0  bash ]$ ls /123
+	[zorro@zorrozou-pc0 bash]$ ls /123
 	ls: cannot access '/123': No such file or directory
-	[zorro@zorrozou-pc0  bash ]$ echo $?
+	[zorro@zorrozou-pc0 bash]$ echo $?
 	2
-	[zorro@zorrozou-pc0  bash ]$ ls /
+	[zorro@zorrozou-pc0 bash]$ ls /
 	bin  boot  cgroup  data  dev  etc  home  lib  lib64  lost+found  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-	[zorro@zorrozou-pc0  bash ]$ echo $?
+	[zorro@zorrozou-pc0 bash]$ echo $?
 	0
 
 返回码逻辑上有两类，0 为真，非零为假。就是说，返回为 0 表示命令执行成功，非零表示执行失败。返回码的取值范围为 0-255。其中错误返回码为 1-255。bash 为我们提供了一个内建命令 `exit`，通过这个命令可以人为指定退出的返回码是多少。这个命令的使用是一般进行 bash 编程的运维人员所不太注意的。我们在上一篇的 bash 编程语法结构的讲解中说过，`if`、`while` 语句的条件判断实际上就是判断命令的返回值，如果我们自己写的 bash 脚本不注意规范的使用脚本退出时的返回码的话，那么这样的 bash 脚本将可能不可以在别人编写脚本的时候，直接使用 `if` 将其作为条件判断，这可能会对程序的兼容性造成影响。因此，请大家注意自己写的 bash 程序的返回码状态。**如果我们的 bash 程序没有显示的以一个 exit 指定返回码退出的话，那么其最后执行命令的返回码将成为整个 bash 脚本退出的返回码。**
@@ -348,14 +348,14 @@ hash 功能实际上是针对外部命令做的一个功能。刚才我们已经
 
 比如说，如果一个进程被 2 号信号打断的话，其返回码一般是 128+2=130。如：
 
-	[zorro@zorrozou-pc0  bash ]$ sleep 1000
+	[zorro@zorrozou-pc0 bash]$ sleep 1000
 	^C
-	[zorro@zorrozou-pc0  bash ]$ echo $?
+	[zorro@zorrozou-pc0 bash]$ echo $?
 	130
 
 在执行 `sleep` 命令的过程中，我使用 `Ctrl+c` 中断了进程的执行。此时返回值为 130。可以用内建命令 `kill -l` 查看所有信号和其对应的编号：
 
-	[zorro@zorrozou-pc0  bash ]$ kill -l
+	[zorro@zorrozou-pc0 bash]$ kill -l
 	 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
 	 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
 	11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
