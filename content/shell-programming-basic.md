@@ -800,8 +800,11 @@ Wrong choice! exit!
 > 版权声明：
 > 
 > 本文章内容在非商业使用前提下可无需授权任意转载、发布。
+> 
 > 转载、发布请务必注明作者和其微博、微信公众号地址，以便读者询问问题和甄误反馈，共同进步。
+> 
 > 微博 ID ： [orroz](http://weibo.com/orroz) 
+> 
 > 微信公众号： Linux 系统技术 (扫描以下二维码关注)
-
-![zorro]({filename}/images/zorro-wechat.jpg)
+> 
+> ![zorro]({filename}/images/zorro-wechat.jpg)
