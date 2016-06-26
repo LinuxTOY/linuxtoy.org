@@ -5,7 +5,7 @@ body {
 
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
-    font-family: Calluna-Exljbris, Georgia, Times, "Times New Roman", serif;
+    font-family: Aller, "Noto Sans", "DejaVu Sans", sans-serif;
 }
 
 a {
@@ -101,7 +101,7 @@ The content `<div>` is where all your content goes.
 }
 
 .posts {
-    font-family: Calluna-Exljbris, Georgia, "Cambria", serif;
+    font-family: Aller, "Noto Sans", "DejaVu Sans", sans-serif;
 }
 
 .post {
@@ -121,7 +121,7 @@ The content `<div>` is where all your content goes.
 }
 
 .post-description {
-    font-family: Calluna-Exljbris, Georgia, "Cambria", serif;
+    font-family: Aller, "Noto Sans", "DejaVu Sans", sans-serif;
     color: #444;
     line-height: 1.8em;
 }
@@ -173,7 +173,7 @@ The content `<div>` is where all your content goes.
 
 pre,
 code {
-    font-family: "DejaVu Sans Mono", Consolas, Courier, monospace;
+    font-family: "Source Code Pro", "DejaVu Sans Mono", Consolas, Courier, monospace;
     font-size: 90%;
     padding: 0.2em 0.4em;
     color: #333;
@@ -242,6 +242,10 @@ blockquote .small:before {
 }
 .nav-right {
     float: right;
+}
+
+.about {
+    font-size: 90%;
 }
 
 /*
