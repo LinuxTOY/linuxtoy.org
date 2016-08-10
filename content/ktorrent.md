@@ -4,22 +4,16 @@ Author: toy
 Category: Apps
 Slug: ktorrent
 
-[KTorrent](http://ktorrent.org) 是 KDE 下的一款 BT
-下载工具，具有速度快而内存占用小的优点，设置也比较简单实用，感觉和 Win
-下的 uTorrent 不相上下。
+[KTorrent](http://ktorrent.org) 是 KDE 下的一款 BT 下载工具，具有速度快而内存占用小的优点，设置也比较简单实用，感觉和 Win 下的 uTorrent 不相上下。
+
+<!-- PELICAN_END_SUMMARY -->
 
 [![KTorrent](http://i.linuxtoy.org/i/ktorrent_s.jpg)](http://i.linuxtoy.org/i/ktorrent.jpg)  
-可以很直观的查看传输进度，而且限制上传率也很方便
 
-[![KTorrent
-search](http://i.linuxtoy.org/i/ktorrent_search_s.jpg)](http://i.linuxtoy.org/i/ktorrent_search.jpg)  
-内建了很多国外的 BT 站点搜索，可以很方便的找到需要的资源
++ 可以很直观的查看传输进度，而且限制上传率也很方便
++ 内建了很多国外的 BT 站点搜索，可以很方便的找到需要的资源
++ 设置起来也很方便
 
-[![KTorrent
-setting](http://i.linuxtoy.org/i/ktorrent_setting_s.jpg)](http://i.linuxtoy.org/i/ktorrent_setting.jpg)  
-设置起来也很方便
+KTorrent 可从官方[下载页面](http://ktorrent.org/index.php?page=downloads)获取。
 
-KTorrent 目前版本为
-2.0.3，可从官方[下载页面](http://ktorrent.org/index.php?page=downloads)获取。
-
-（非常感谢 [puNk!d](http://punkprojekt.com) 朋友的推荐）
+{ 非常感谢 [puNk!d](http://punkprojekt.com) 朋友的推荐 }
