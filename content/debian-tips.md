@@ -19,7 +19,7 @@ Slug: debian-tips
 
         ar x dpkg_1.17.26_amd64.deb
 
-  可能大家对于 `tar` 比较熟悉，这个 `ar` 又是什么东东？`ar` 是一个比 `tar` 还要古老的归档工具，这里的 `x` 指令是提取的意思，跟 `tar` 类似。
+    可能大家对于 `tar` 比较熟悉，这个 `ar` 又是什么东东？`ar` 是一个比 `tar` 还要古老的归档工具，这里的 `x` 指令是提取的意思，跟 `tar` 类似。
 
 3. 再用 `tar` 将所需文件展开到 /（根目录）：
 
@@ -125,17 +125,17 @@ vim 之后的 `+` 为安装之意。
 
         apt-mark hold <pkg>
 
-  比如，阻止升级 Perl，执行 `apt-mark hold perl` 即可。
+    比如，阻止升级 Perl，执行 `apt-mark hold perl` 即可。
 
 + 取消阻止 
 
-  如果不想阻止了，那么可以通过 `apt-mark unhold` 取消：
+    如果不想阻止了，那么可以通过 `apt-mark unhold` 取消：
 
         apt-mark unhold <pkg>
 
 + 显示已阻止的包
 
-  要查看已经被阻止的包，则可以执行：
+    要查看已经被阻止的包，则可以执行：
 
         apt-mark showhold
 
@@ -153,7 +153,7 @@ Approx 的使用方法很简单，按如下步骤执行即可：
 
 + 配置 Approx
 
-  Approx 的配置文件存于 `/etc/approx/approx.conf`，将下列地址行前的注释去掉：
+    Approx 的配置文件存于 `/etc/approx/approx.conf`，将下列地址行前的注释去掉：
 
         # <name> <repository-base-url>
         debian   http://ftp.debian.org/debian
@@ -161,7 +161,7 @@ Approx 的使用方法很简单，按如下步骤执行即可：
 
 + 配置 `sources.list`
 
-  Approx 默认监听 9999 端口，调整需要使用代理缓存的 Debian 系统的 `sources.list` 文件，将其指向 Approx 所在机器的域名或 IP：
+    Approx 默认监听 9999 端口，调整需要使用代理缓存的 Debian 系统的 `sources.list` 文件，将其指向 Approx 所在机器的域名或 IP：
 
         deb http://192.168.0.2:9999/debian jessie main contrib non-free
         deb http://192.168.0.2:9999/security jessie/updates main contrib non-free
