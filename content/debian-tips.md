@@ -165,3 +165,21 @@ Approx 的使用方法很简单，按如下步骤执行即可：
 
         deb http://192.168.0.2:9999/debian jessie main contrib non-free
         deb http://192.168.0.2:9999/security jessie/updates main contrib non-free
+
+**在多台系统安装相同的包**
+
+笔者有两台 VPS 都跑着 Debian 系统，它们的基本环境几乎一致。为了方便省事，在一台系统上装好所需要的包之后，将其导出为包列表：
+
+    dpkg --get-selections > installed_pkgs.txt
+
+接着，把导出的列表文件 `installed_pkgs.txt` 传输到另一台系统。并执行以下操作：
+
+    # 更新 dpkg 的包数据库
+    apt-cache dumpavail > avail.txt
+    dpkg --merge-avail avail.txt
+    # 更新 dpkg 的包列表
+    dpkg --set-selections < installed_pkgs.txt
+    # 安装选择的包
+    apt-get dselect-upgrade
+
+若有其它 Debian 系统，则依法炮制即可。
