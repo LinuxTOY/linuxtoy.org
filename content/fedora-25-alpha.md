@@ -16,7 +16,7 @@ Slug: fedora-25-alpha
 * IBus Emoji 表情符号输入
 * Unicode 9.0 字符集支持
 * 使用包含更多企业级存储功能的 Storaged 替代 UDisk2
-* Rust 编译器及其 Cango 包管理支持
+* Rust 编译器及其 Cargo 包管理支持
 * 改善对于切换式双显卡的支持
 
 [官方 Workstation 版本 Alpha 下载](https://getfedora.org/en/workstation/prerelease/)
