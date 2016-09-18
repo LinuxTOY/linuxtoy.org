@@ -127,7 +127,7 @@ vim 之后的 `+` 为安装之意。
 
     比如，阻止升级 Perl，执行 `apt-mark hold perl` 即可。
 
-+ 取消阻止 
++ 取消阻止
 
     如果不想阻止了，那么可以通过 `apt-mark unhold` 取消：
 
