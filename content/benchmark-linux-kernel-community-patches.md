@@ -22,60 +22,60 @@ Linux 内核主线总体而言兼具了性能、稳定和安全于一身，不�
 
 我自己使用的台式机，配置如下图：
 
-![benchmark-linux-kernel-community-patches-testing-platform]({filename}/images/benchmark-linux-kernel-community-patches-testing-platform.png)
+![benchmark-linux-kernel-community-patches-testing-platform](/images/benchmark-linux-kernel-community-patches-testing-platform.png)
 
 使用测试的四个内核，分别是pf内核4.8.0.pf2版本，zen内核4.7.6版本，两个grsecurity/pax（下文简称GP，GP内核在图中都是带有-grsec的版本）内核版本，其中之一使用主线内核和GP补丁，另一个使用主线、GP补丁和Graysky2补丁。详见下图：
 
 
-![benchmark-linux-kernel-community-patches-testing-kernels]({filename}/images/benchmark-linux-kernel-community-patches-testing-kernels.png)
+![benchmark-linux-kernel-community-patches-testing-kernels](/images/benchmark-linux-kernel-community-patches-testing-kernels.png)
 
 ### 测试
 
 #### C-Ray测试
 
-![benchmark-linux-kernel-community-patches-cray]({filename}/images/benchmark-linux-kernel-community-patches-cray.png)
+![benchmark-linux-kernel-community-patches-cray](/images/benchmark-linux-kernel-community-patches-cray.png)
 
 从 C-Ray 的测试中，可以发现 GP 内核表现基本一致。4.7.7是GP+Graysky2的版本，如果说这个是比GP原生有所提升，这个微小的差距人类是无法感觉到的。另外，zen内核和pf内核虽然大版本不同，但差距非常小。
 
 #### Parallel BZIP2 Compression 测试
 
-![benchmark-linux-kernel-community-patches-bzip2]({filename}/images/benchmark-linux-kernel-community-patches-bzip2.png)
+![benchmark-linux-kernel-community-patches-bzip2](/images/benchmark-linux-kernel-community-patches-bzip2.png)
 
 这项测试的结果与上一个基本类似。
 
 #### 7-Zip Compression 测试
 
-![benchmark-linux-kernel-community-patches-7zip]({filename}/images/benchmark-linux-kernel-community-patches-7zip.png)
+![benchmark-linux-kernel-community-patches-7zip](/images/benchmark-linux-kernel-community-patches-7zip.png)
 
 这项测试的结果也在预料之中。不过从以上三项测试，不难看出 GP 内核的性能确实较另外两个差些。
 
 #### Loopback TCP Network Performance 测试
 
-![benchmark-linux-kernel-community-patches-tcp]({filename}/images/benchmark-linux-kernel-community-patches-tcp.png)
+![benchmark-linux-kernel-community-patches-tcp](/images/benchmark-linux-kernel-community-patches-tcp.png)
 
 这个测试中对比两个 GP 和其它两个内核，发现GP几乎完败。 
 
 #### IOzone 测试
 
-![benchmark-linux-kernel-community-patches-iozone]({filename}/images/benchmark-linux-kernel-community-patches-iozone.png)
+![benchmark-linux-kernel-community-patches-iozone](/images/benchmark-linux-kernel-community-patches-iozone.png)
 
 这项测试中除了 zen 内核明显领先，其他都差不多。
 
 #### SQLite 测试
 
-![benchmark-linux-kernel-community-patches-sqlite]({filename}/images/benchmark-linux-kernel-community-patches-sqlite.png)
+![benchmark-linux-kernel-community-patches-sqlite](/images/benchmark-linux-kernel-community-patches-sqlite.png)
 
 这项测试中 GP 内核有小幅领先，但差距不大。
 
 #### Apache 测试
 
-![benchmark-linux-kernel-community-patches-apache]({filename}/images/benchmark-linux-kernel-community-patches-apache.png)
+![benchmark-linux-kernel-community-patches-apache](/images/benchmark-linux-kernel-community-patches-apache.png)
 
 关于GP+graysky2的版本为什么跑下来还不如不优化的GP，猜测原因有可能是我后来将 `kernel.grsecurity.harden_ipc` 设置为0有关，待到后面总结详谈。
 
 #### PostgreSQL pgbench 测试
 
-![benchmark-linux-kernel-community-patches-pgbench]({filename}/images/benchmark-linux-kernel-community-patches-pgbench.png)
+![benchmark-linux-kernel-community-patches-pgbench](/images/benchmark-linux-kernel-community-patches-pgbench.png)
 
 这个测试中缺失GP原始版本的跑分，推测也和上一个测试中的异常得分有关。不过神奇的是在这个版本中，GP+graysky2的GP版本跑分超过了两个优化的内核。
 

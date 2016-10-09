@@ -44,8 +44,8 @@ Pine64 是一个于 2015 年 12 月在 [Kickstarter 举行众筹](https://www.ki
 
 既然 SoC 是全志出品，估计你也猜到了其 Linux 的支持水平：**能用，但问题不少**。根据[更新相对及时的 Wiki 页面](http://wiki.pine64.org/index.php/Main_Page#Software.2FImage_Download)上显示，目前已经有基于它订制内核的 Debian Jessie + MATE 和 Ubuntu Xfce 两个发行版，众筹时宣传的诸如 OpenWrt 什么的还没见到。论坛上其他的人使用中也时常遇到些奇葩的小问题。
 
-如果不介意其停留在 3.18 的内核及问题多多的 Linux OpenGL 加速的话，还算基本能用，不过是完全无法跟接近 Kernel 主线支持的 Rapsberry Pi 相比较，意料之中。
-不，Kodi 及其各类基于它的 Linux 发行版并没有支持 PINE64 的计划。
+如果不介意其停留在 3.10 的内核及问题多多的 Linux OpenGL 加速的话，还算基本能用，不过是完全无法跟接近 Kernel 主线支持的 Rapsberry Pi 相比较，意料之中。
+Kodi 及其各类基于它的 Linux 发行版并没有支持 PINE64 的计划。
 
 鉴于此，Android 其实是将其投入桌面应用的唯一可行方案，也是笔者当初购买时的初衷。于是烧入其官方认为相对稳定的 Android 5.1.1 版本。
 
@@ -62,7 +62,7 @@ Pine64 是一个于 2015 年 12 月在 [Kickstarter 举行众筹](https://www.ki
 
 如上所说，Linux 桌面应用当下是比较骨感，于是在这一个月来都是配合[空中飞鼠](https://detail.tmall.com/item.htm?id=19487710893)当做电视盒和高清播放机使用的，配合各类视频应用和 Kodi，稳定流畅，应用订制上比价位接近的电视盒要省心不少。
 
-若作为 Linux 服务器，其造型和接口布局则是个问题。这个尺寸完全无法用于常见的 Raspberry Pi 集群支架，网线和 USB 对边的布局虽然方便了桌面应用，但是对于在空间有限的柜子里部署 USB 类设备布线和网线布局则会造成麻烦。
+若作为 Linux 服务器，其造型和接口布局则是个问题。这个尺寸完全无法用于常见的 Raspberry Pi 集群支架，网线和 USB 分开的布局虽然方便了桌面应用，但是对于在空间有限的柜子里部署 USB 类设备和网线布局则会造成麻烦。
 
 进入 2016 年来，市场上 64 位的 SBC 明显多了不少，PINE64 的价格优势在考虑了邮费之后并不明显，除非国内有分销商。其社区成熟度及 Linux 支持度远远不如 Raspberry Pi。所以若是您在寻求一个适合 Linux 的 SBC，RPi3 或许依然是您最好的选择；若是只是想要一个高度可订制的 Android 电视盒的话，PINE64 倒是一个相当吸引人的方案。
 
