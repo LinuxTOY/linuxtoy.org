@@ -47,7 +47,10 @@ Slug: howto-install-fedora25beta-on-termux-and-raspberrypi
 
 有了 Fedora 的一大好处就是可以弥补 Termux 没有图形环境的不足，于是可以安装你偏好的桌面环境（推荐使用无需 3D 加速的）即可，然后配合使用 [XServer XSDL](https://play.google.com/store/apps/details?id=x.org.server)即可。对于 Xperia Z4 Tablet 来说，合适的比例为 1280x800, 字体倍率0.7。过大或过小的倍率会导致 LXDE 的一些应用看不到菜单。
 
-经测试，尽管在安装过程中有一两个软件包异常，不过 **LXDE 及 LibreOffice** 基本可用。遗憾的是另一款在下常用的软件 R 则由于 `gcc` 安装失败，尽管成功了但是基本无法实际使用。中文输入法尚未搞定，原因不明…
+经测试，尽管在安装过程中有一两个软件包异常，不过 **LXDE 及 LibreOffice** 基本可用。遗憾的是另一款在下常用的软件 R 则由于 `gcc` 安装失败，尽管成功了但是基本无法实际使用。有几点需要注意的：
+
+* 中文输入法与Android 系统的输入法配置有关，谷歌拼音不可用，但触宝可以
+* 在 Android 6.0+ 以上系统中由于 SELinux 限制了创建硬连接，会导致有此需求的软件包安装失败，比如常见的 `unzip` 和 `gcc` 等。
 
 对于朝内用户来说，aarch64 作为次级架构，国内并没有镜像同步，于是 dnf 速度较慢，需要科学解决。此外毕竟是次级架构，有些软件包可能存在安装异常的问题（比如常见的 `unzip` 和 `gcc`）。不过若是你的 Android 手机使用了 ARMv8 指令集的较新 SoC 的话，这只能是一个必须忍受的痛苦，ARMv7 的用户则不受此条困扰。
 
