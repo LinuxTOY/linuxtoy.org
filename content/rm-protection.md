@@ -10,9 +10,13 @@ Via:
 
 <!-- PELICAN_END_SUMMARY --> 
 
+![rm-p]({filename}/images/rm-p-logo.png)
+
 rm-protection 就是这样一个轮子。它与原生 rm 完全兼容（事实上它会将参数原封不动地传递给 rm），唯一不同的是，它在执行 rm 前将检查你要删的每一个文件或者目录是否被「保护」。rm-protection 提供了一个命令 protect 来保护文件或者目录，通过这个命令你可以为一个文件或者目录设置一个安全问题与回答。
 
 若是 GitLab 管理员提前将数据库目录保护起来，设置问题和回答为分别「你在删哪个数据库？」「生产」。当管理员回答「测试」时，就会自动中止并提示，防止酿成惨剧。
+
+![rm-p]({filename}/images/rm-p.gif)
 
 [源代码](https://github.com/alanzchen/rm-protection)已经在 GitHub 上了。程序也已经被打包到 PyPi。
 
