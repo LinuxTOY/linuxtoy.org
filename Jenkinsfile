@@ -11,7 +11,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'sudo mv -f -u output/* /var/www/linuxtoy.org'
+                sh 'sudo rm -rf /var/www/linuxtoy.org'
+                sh 'sudo mv output /var/www/linuxtoy.org'
             }
         }
     }
