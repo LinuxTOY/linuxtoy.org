@@ -1,11 +1,12 @@
 pipeline {
     agent any
-
+    options {
+        skipDefaultCheckout()
+    }
     stages {
         stage('Build') {
             steps {
                 slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                checkout scm
                 sh 'pelican --ignore-cache'
             }
         }
