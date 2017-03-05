@@ -94,4 +94,4 @@ Vultr、Linode、DigitalOcean 这三家 VPS 提供商作为例子加以说明。
 [1]: https://linuxtoy.org/archives/hands-on-with-ansible.html
 [2]: http://www.vultr.com/?ref=7123175
 [3]: https://www.vultr.com/docs/how-do-i-generate-ssh-keys/
-[4]: https://paste.unixkoans.com/view/c6b6ec48
+[4]: https://paste.unixkoans.com/view/8f0b8cb2
