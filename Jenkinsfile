@@ -10,12 +10,6 @@ pipeline {
                 sh 'pelican --ignore-cache'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'sudo rm -rf /var/www/linuxtoy.org'
-                sh 'sudo mv output /var/www/linuxtoy.org'
-            }
-        }
     }
     post {
         success {
