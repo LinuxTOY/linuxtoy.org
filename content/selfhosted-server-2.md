@@ -30,7 +30,7 @@ Via:
 
 **创建服务器**
 
-1. 遵照上一篇文章隆[Selfhosted Server][4]。
+1. 遵照上一篇文章克隆 [Selfhosted Server][4]。
 
 2. 打开 `group_vars/local.yml`，定位到下列行：
 
