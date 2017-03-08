@@ -135,8 +135,8 @@ Ansible 由 Puppet 的前雇员所创建，使用起来真的很简单。不仅�
 [p]: http://linuxtoy.org/archives/puppet.html  
 [c]: http://www.opscode.com/chef/  
 [s]: http://linuxtoy.org/archives/saltstack.html  
-[a]: http://www.ansibleworks.com/  
-[i]: http://www.ansibleworks.com/docs/intro_installation.html  
-[m]: http://www.ansibleworks.com/docs/modules.html  
-[d]: http://www.ansibleworks.com/docs/#playbooks  
+[a]: http://www.ansible.com/  
+[i]: http://www.ansible.com/docs/intro_installation.html  
+[m]: http://www.ansible.com/docs/modules.html  
+[d]: http://www.ansible.com/docs/#playbooks  
 [e]: https://github.com/ansible/ansible-examples
