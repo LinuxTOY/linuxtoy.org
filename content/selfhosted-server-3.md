@@ -72,6 +72,8 @@ Via:
 
     根据提示输入 1，然后再输入 API Token。待脚本执行完毕即可投入使用了。
 
+    ![DigitalOcean Server]({filename}/images/do-server.png)
+
 **一点比较**
 
 经过对 Vultr、Linode、以及 DigitalOcean 的使用，笔者感觉在付费计划上，Vultr
