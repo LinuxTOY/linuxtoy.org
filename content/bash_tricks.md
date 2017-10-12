@@ -12,7 +12,8 @@ Slug: bash_tricks
     Bash 的默认配置会存在一个问题，如果同时打开两个（或两个以上的）控制台，那么在这两个控制台中执行的命令并不会互相分享到 history 中。有的命令历史甚至最终会被覆盖掉。要解决这个问题，可把下列内容添加到
     `~/.bashrc` 或 `~/.bash_profile` 文件中：  
 
-        shopt -s histappend PROMPT_COMMAND='history -a'
+        shopt -s histappend 
+        PROMPT_COMMAND='history -a'
 
     第一句的作用是将命令追加到 history 中。第二句是在显示命令提示符时，保存 history。
 
