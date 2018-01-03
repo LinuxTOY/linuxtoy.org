@@ -10,6 +10,6 @@ Via:
 
 <!-- PELICAN_END_SUMMARY -->_
 
-体验期您可以享受半价优惠，我们承诺将每月收益的 10% 捐给开源项目，欢迎访问：https://selfhostedserver.com/ 
+体验期您可以享受半价优惠，我们承诺将每月收益的 10% 捐给开源项目，欢迎访问：<https://selfhostedserver.com>
 
 [![selfhosted-apps]({filename}/images/selfhosted-apps.thumb.jpg)]({filename}/images/selfhosted-apps.jpg)
