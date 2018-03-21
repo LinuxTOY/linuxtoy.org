@@ -159,7 +159,7 @@ html_footer = """
 </html>
 """
 
-with codecs.open('output/pages/comments.html', mode='w', encoding='utf-8') as f:
+with codecs.open('/var/www/linuxtoy.org/pages/comments.html', mode='w', encoding='utf-8') as f:
     f.write(html_header)
     for item in disqus.entries:
         dt = datetime.datetime(*item.published_parsed[:7]) + datetime.timedelta(hours=12)
