@@ -54,7 +54,7 @@
                             {% endif %}
 
                             {% if DISPLAY_PAGES_ON_MENU -%}
-                            {% for pg in PAGES|sort(attribute='page_order') %}
+                            {% for pg in pages|sort(attribute='page_order') %}
                             <li class="pure-menu-item{% if pg == page %} pure-menu-selected{% endif %}">
                                 <a class="pure-menu-link" href="{{ SITEURL }}/{{ pg.url }}" title="{{ pg.title }}">{{ pg.title }}</a>
                             </li>
