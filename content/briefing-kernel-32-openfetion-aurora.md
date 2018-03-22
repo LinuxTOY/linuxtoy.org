@@ -21,6 +21,6 @@ Btrfs
 暂时不工作。[发布日志及下载地址](http://www.mozilla.org/en-US/mobile/11.0a2/auroranotes/)
 [消息来源](http://www.h-online.com/open/news/item/Firefox-Aurora-for-Android-gets-native-UI-1403381.html)
 
-[![](http://linuxtoy.org/img/2012/01/firefox-aurora-1.png "firefox-aurora-1")](http://linuxtoy.org/img/2012/01/firefox-aurora-1.png)
+[![firefox](http://linuxtoy.org/img/2012/01/firefox-aurora-1.png "firefox-aurora-1")](http://linuxtoy.org/img/2012/01/firefox-aurora-1.png)
 
-[![](http://linuxtoy.org/img/2012/01/firefox-aurora-2.png "firefox-aurora-2")](http://linuxtoy.org/img/2012/01/firefox-aurora-2.png)
+[![firefox](http://linuxtoy.org/img/2012/01/firefox-aurora-2.png "firefox-aurora-2")](http://linuxtoy.org/img/2012/01/firefox-aurora-2.png)
