@@ -1,7 +1,3 @@
-## 重要
-
-本仓库已迁移至 **<https://github.com/LinuxTOY/linuxtoy.org>**，请使用新地址提交或发送 Pull Request。
-
 linuxtoy.org
 ------------
 
