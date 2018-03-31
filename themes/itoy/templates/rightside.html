@@ -1,37 +1,69 @@
 {% block rightside %}
 <div class="content pure-u-1 pure-u-md-1-5">
     <div class="posts">
-        {% if article %}
-        {% include 'gadright.html' %}
-        {% else %}
+        {% if article %} {% include 'vultr.html' %} {% else %}
         <h1 class="content-subhead">About Us</h1>
-        <p class="about">LinuxTOY 是一个致力于提供 Linux
-        相关资讯的专题站点。如果您发现了好用好玩的 Linux
-        东东并愿意发扬自由、分享的精神，可以点击左部导航 Contact
-        按钮进行投稿。</p>
+        <p class="about">LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。如果您发现了好用好玩的 Linux 东东并愿意发扬自由、分享的精神，可以点击左部导航 Contact 按钮进行投稿。
+        </p>
         {% endif %}
 
         <h1 class="content-subhead">Popular Posts</h1>
         <div class="pure-menu">
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
-                <li class="pure-menu-item"><a href="/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
-                <li class="pure-menu-item"><a href="/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
-                <li class="pure-menu-item"><a href="/archives/wget-tips.html">Wget 使用技巧</a></li>
-                <li class="pure-menu-item"><a href="/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
-                <li class="pure-menu-item"><a href="/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
-                <li class="pure-menu-item"><a href="/archives/3_free_antivirus_under_linux.html">Linux 下的桌面级杀毒软件</a></li>
-                <li class="pure-menu-item"><a href="/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
-                <li class="pure-menu-item"><a href="/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
-                <li class="pure-menu-item"><a href="/archives/5-desktop-environment-for-linux.html">你可能不知道的 Linux 桌面</a></li>
-                <li class="pure-menu-item"><a href="/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
-                <li class="pure-menu-item"><a href="/archives/lightweight-desktop-compare.html">轻量级桌面环境比较</a></li>
-                <li class="pure-menu-item"><a href="/archives/zsh.html">终极 Shell——Zsh</a></li>
-                <li class="pure-menu-item"><a href="/archives/6-of-the-best-free-linux-cad-software.html">高品质的免费 Linux CAD 程序</a></li>
-                <li class="pure-menu-item"><a href="/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
-                <li class="pure-menu-item"><a href="/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
-                <li class="pure-menu-item"><a href="/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
-                <li class="pure-menu-item"><a href="/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+                <li class="pure-menu-item">
+                    <a href="/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/wget-tips.html">Wget 使用技巧</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/playing-around-with-mplayer.html">玩转 MPlayer</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/awesome.html">平铺式窗口管理器 Awesome</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/3_free_antivirus_under_linux.html">Linux 下的桌面级杀毒软件</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/5-desktop-environment-for-linux.html">你可能不知道的 Linux 桌面</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/lightweight-desktop-compare.html">轻量级桌面环境比较</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/zsh.html">终极 Shell——Zsh</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/6-of-the-best-free-linux-cad-software.html">高品质的免费 Linux CAD 程序</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a>
+                </li>
             </ul>
         </div>
     </div>
