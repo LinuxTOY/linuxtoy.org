@@ -17,7 +17,7 @@ mdv 在终端下渲染出 Markdown 文档的样式，包含多个主题、支持
 
 要在你的系统上安装 mdv，可以执行以下指令：
 
-    pip installl mdv
+    pip install mdv
 
 [mdv 的源码][m]位于 GitHub，在那可以了解有关它的更多信息。
 
