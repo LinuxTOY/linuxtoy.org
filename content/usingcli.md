@@ -9,6 +9,6 @@ Slug: usingcli
 
 <!-- PELICAN_END_SUMMARY -->
 
-![usingcli]({filename}/images/usingcli.png)
+![usingcli]({filename}/images/usingcli.thumb.png)
 
 欢迎访问：<https://selfhostedserver.com/usingcli>
