@@ -6,6 +6,8 @@ Slug: blueman-connect
 
 目前 Debian 对蓝牙设备的支持也越来越好了，我整理了用蓝牙连接鼠标、音箱和手机的步骤，分享给大家。
 
+<!-- PELICAN_END_SUMMARY -->
+
 [![蓝牙管理器截屏](https://cdn.atzlinux.com/pics/packages/b/blueman/jiemian.png)]
 (https://cdn.atzlinux.com/pics/packages/b/blueman/jiemian.png)
 
