@@ -24,6 +24,7 @@ Page_Order: 8
 - [KDE 中国](http://www.kdecn.org/)
 - [Linux By Examples](http://linux.byexamples.com/)
 - [Linux Deepin 官网](http://www.linuxdeepin.com)
+- [铜豌豆 Linux](http://www.atzlinux.com)
 - [Linux-Wiki.cn](http://www.linux-wiki.cn/)
 - [Plan 9](http://swtch.com/plan9port/)
 - [UCloud 云计算](http://www.ucloud.cn/)
