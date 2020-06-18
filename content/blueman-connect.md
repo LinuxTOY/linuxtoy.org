@@ -1,4 +1,4 @@
-Title: Debian xfce 蓝牙连接周边外设--鼠标、音箱、手机
+Title: Debian Xfce 蓝牙连接周边外设
 Date: 2020-06-18 17:57
 Author: 肖盛文
 Category: Apps
