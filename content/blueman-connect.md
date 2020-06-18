@@ -8,12 +8,9 @@ Slug: blueman-connect
 
 <!-- PELICAN_END_SUMMARY -->
 
-[![蓝牙管理器截屏](https://cdn.atzlinux.com/pics/packages/b/blueman/jiemian.png)]
-(https://cdn.atzlinux.com/pics/packages/b/blueman/jiemian.png)
+![蓝牙管理器截屏](https://cdn.atzlinux.com/pics/packages/b/blueman/jiemian.png)
 
 具体连接方法，请访问：
-[https://www.atzlinux.com/skills.htm#bluetooth]
-(https://www.atzlinux.com/skills.htm#bluetooth)
+<https://www.atzlinux.com/skills.htm#bluetooth>
 
 以上连接步骤是在 Debian 10.4.0 稳定版上测试验证的。
-
