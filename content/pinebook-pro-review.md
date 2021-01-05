@@ -1,5 +1,5 @@
 Title: PineBook Pro 评测
-Date: 2020-12-24 12:00
+Date: 2021-01-05 12:00
 Category: Gadget
 Tags: manjaro, armbian, pine64
 Slug: pinebook-pro-review
@@ -24,13 +24,13 @@ Authors: lovenemesis
 * 10000mAH 电池
 * 铝镁合金外壳，无风扇全被动散热设计
 
-相比之前的产品，PineBook Pro 至少在外围接口领域至少跟上了现在的主流标准。然而在某宝上仅需比笔者订单价在多支付三四百元，便能购入的一台性能看起来更有优势的全新 X86 笔记本，譬如 HP 星14 青春版为代表使用搭载 Ryzen Mobile R3 3250U 的笔记本，若是二手市场则选择更为广泛。在本文接下来的体验中，笔者将时不时结合手头稍早型号的 Ryzen Mobile 2500U 轻薄笔记本作为参考进行比较。
+相比之前的产品，PineBook Pro 至少在外围接口领域至少跟上了现在的主流标准。然而在某宝上仅需比笔者订单价在多支付三四百元，便能购入的一台性能看起来更有优势的全新 X86 笔记本，譬如以 HP 星14 青春版为代表的搭载 Ryzen Mobile R3 3250U 的笔记本，若是二手市场则选择更为广泛。在本文接下来的体验中，笔者将时不时结合手头稍早型号的 Ryzen Mobile 2500U 轻薄笔记本作为参考进行比较。
 
 ### 外观做工 ###
 
-由于购买渠道的特殊性，笔者的 PineBook Pro 的开箱既是拆开套娃快递盒的过程，五层包装后终于到最后一层那个平淡无奇，仅仅在左下角便利贴表示为 ANSI 的原浆色本体包装盒，小巧的 15W 圆孔电源适配器单独在另一个白色的盒子里。1.2KG 的 PineBook Pro 本体纯黑色的外壳，铝镁合金的 A 面和 D 面表面没有使用任何拉丝或者磨砂工艺，轻度指纹收集器。值得一提的是，它的屏幕的下边缘尽管没有部分游戏本那样垫起 D 面改善散热的作用（因为 D 面本来就有四个巨大的圆形橡胶垫），但依然不能展开至 180 度。当然不是大问题，但这对于习惯了 2-in-1 的笔者来讲差点导致开箱即杯具……此外笔者收到的估计是九月份生产的最后一批预装预置 Debian 的版本，虽然并非预装开箱体验更好的 Manjaro KDE，但也没有年初早期版本诸如 WiFi 隐私启用、屏幕排线异常或者扬声器排线错误的问题。类似 MacBook Air 的整体设计的全黑机身低调沉稳、毫不张扬，若不是底部强制性的 FCC 标签可谓毫无特征。它做工方面可以说尚可，硬质塑料的 B、 C 面与 A、D 铝镁合金面的接缝基本规整，但估计模具设计优先考虑易拆卸，面板接缝处于单手抓持时候的掌心部分，虽说不至于割手，但还是能感受到接缝的存在。做工之外，硬件本身素质如何呢？
+由于购买渠道的特殊性，笔者的 PineBook Pro 的开箱即是拆开套娃快递盒的过程，五层包装后终于到最后一层那个平淡无奇，仅仅在左下角便利贴表示为 ANSI 的原浆色本体包装盒，小巧的 15W 圆孔电源适配器单独在另一个白色的盒子里。1.2KG 的 PineBook Pro 本体纯黑色的外壳，铝镁合金的 A 面和 D 面表面没有使用任何拉丝或者磨砂工艺，轻度指纹收集器。值得一提的是，它的屏幕的下边缘尽管没有部分游戏本那样垫起 D 面改善散热的作用（因为 D 面本来就有四个巨大的圆形橡胶垫），但依然不能展开至 180 度。当然不是大问题，但这对于习惯了 2-in-1 的笔者来讲差点导致开箱即杯具……此外笔者收到的估计是九月份生产的最后一批预装预置 Debian 的版本，虽然并非预装开箱体验更好的 Manjaro KDE，但也没有年初早期版本诸如 WiFi 隐私启用、屏幕排线异常或者扬声器排线错误的问题。类似 MacBook Air 的整体设计的全黑机身低调沉稳、毫不张扬，若不是底部强制性的 FCC 标签可谓毫无特征。它做工方面可以说尚可，硬质塑料的 B、 C 面与 A、D 铝镁合金面的接缝基本规整，但估计模具设计优先考虑易拆卸，面板接缝处于单手抓持时候的掌心部分，虽说不至于割手，但还是能感受到接缝的存在。做工之外，硬件本身素质如何呢？
 
-* 这块屏幕的 250 nit的亮度、1000:1 的对比度、63% sRGB 的色域覆盖、不可调整的 1080P 分辨率和 60Hz 刷新率的参数非常高调的彰显着“为软硬件开发人员省钱”的设计思想，并不适合影音娱乐和图像处理。不过在写代码之余仅仅用来玩玩怀旧的模拟游戏或者看看动漫，那还是毫无问题的。基本上**明显落后**相近价位的 X86 笔记本。
+* 这块屏幕的 250 nit的亮度、1000:1 的对比度、63% sRGB 的色域覆盖、不可调整的 1080P 分辨率和 60Hz 刷新率的参数非常高调的彰显着“为软硬件开发人员省钱”的设计思想，并不适合影音娱乐和图像处理。不过若在写代码之余仅仅用来玩玩怀旧的模拟游戏或者看看动漫，那还是毫无问题的。基本上**明显落后**相近价位的 X86 笔记本。
 * 扬声器是另一个高调彰显上述设计思想的地方，本身高频走音低频不在中频声音还有点儿小，位置又在 D 面朝下，导致最终外放效果还不如手机。不过它依然贴心的保有 3.5mm 耳机麦克接口，不影响戴耳机写代码的极客们，但总体上还是**落后**相近价位的 X86 笔记本。
 * 无线模块虽说是 802.11ac 了，但受制于单天线设计，WiFi 5 理论速率上限只有 433Mbps，且若是同时开蓝牙的话会影响同频段 2.4G 的 WLAN 连接。笔者实测了在 802.11ac 网络配合蓝牙 5.0 耳机观看流媒体视频，并未觉察到影响，所以现阶段可以认为与相近价位的 X86 笔记本**持平**。当然最好的检测方法是联网游戏，不过目前软件生态不允许……
 * 电池从容量上来说确实够大，且结合 ARM 低负载时低功耗的特性，根本不用在诸如午餐时段走开的时候进入睡眠模式。仅仅是轻度网页配合文字工作的话，满充后显示可以工作 14 的小时，完整覆盖工作和加班时间，**领先**于这个价位的 X86 笔记本。
@@ -60,13 +60,20 @@ Manjaro 20.10 提供的开箱体验虽不比 Fedora Workstation 和 GNOME 高度
 * 触控板右键：尽管触控板手势默认支持了，但响应程度并不如预期，特别是双指右键常常没相应。好在 [Wiki 上给出了微调的方式](https://wiki.pine64.org/wiki/Pinebook_Pro#X-Windows_.26_trackpad_settings)，在 KDE 环境下可以通过“系统设置” - “触摸板” 调整其 “最大时间” 参数实现。
 * 网页浏览：预装的 Firefox 虽然版本紧跟发布，但由于 Panforst 的缘故并无法启用 WebRender，而强行启用会导致部分页面花屏的情况，所以虽然流畅，但是渲染速度**逊色**于相近价位上 X86 的 Linux 笔记本。另外角度，由于 Widevine DRM 模块没有预编译的 ARMv8 版本，部分需要此模块的在线视频站点会无法正常使用，但社区提供了一个 [Docker 当作临时措施](https://wiki.pine64.org/wiki/Pinebook_Pro#Watching_DRM_content_.28Netflix.2C_etc..29)部分解决。
 * 中文支持：得益于 KDE 国际化的良好支持，系统已经预装了 noto 字体，不会有豆腐块的情况。但中文输入法的配置却不像 GNOME 环境下那么便捷。首先 Manjaro 没有像 Ubuntu 那样提供类似“Language Support”的图形化工具，一站式的搞定应用软件语言包、输入法框架和环境变量设置等配置，需要用户根据需求手动安装各个组建并配置。其次 KDE 环境下首推的 FCITX5 输入法框架在 Pinebook Pro 上候选字选择栏渲染花屏，这恐怕还是 Panfrost 的问题……最终，参照 [Arch IBus Wiki](https://wiki.archlinux.org/index.php/IBus) 上配置完成中文输入法。
-* 硬件解码：尽管 SoC 不同，但这方面和 [Pine64 的状态类似](https://linuxtoy.org/archives/lightweight-portable-desktop-with-pine64.html)，内核部分的支持在最新的 5.9 中已经包含，但是对应用户态的库和应用软件的支持都还尚在进行中。于是现阶段视频解码工作只能依赖 CPU 部分软解码实现。这方面经过测试，1080P 24FPS/30FPS 的视频回放（例如 B 站的 1080P）没有问题，此时 CPU 占有率约 70%，更高码率的 1080P 60FPS （例如 B 站大会员的 1080P+ ）则会导致 CPU 占有率飙升至 80% 以上，出现高达 30% 丢帧的情况。这样的性能意味着大多数互联网视频和本地视频观看是不受影响的。同时得益于 ARM 本身较低的功耗和温控，续航时间有保证，笔者尝试了在 WiFi 5 网络下全屏播放 [B 站的 2020 Game Awards](https://www.bilibili.com/video/BV15z4y1C7nD)后仍有 68% 的余电，长达只可惜屏幕是在差强人意，否则外出刷剧还是不错的。
+* 硬件解码：尽管 SoC 不同，但这方面和 [Pine64 的状态类似](https://linuxtoy.org/archives/lightweight-portable-desktop-with-pine64.html)，内核部分的支持在最新的 5.9 中已经包含，但是对应用户态的库和应用软件的支持都还尚在进行中。于是现阶段视频解码工作只能依赖 CPU 部分软解码实现。这方面经过测试，1080P 24FPS/30FPS 的视频回放（例如 B 站的 1080P）没有问题，此时 CPU 占有率约 70%，更高码率的 1080P 60FPS （例如 B 站大会员的 1080P+ ）则会导致 CPU 占有率飙升至 80% 以上，出现高达 30% 丢帧的情况。这样的性能意味着大多数互联网视频和本地视频观看是不受影响的。同时得益于 ARM 本身较低的功耗和温控，续航时间颇有保证，笔者尝试了在 WiFi 5 网络下全屏播放 [B 站的 2020 Game Awards](https://www.bilibili.com/video/BV15z4y1C7nD)结束后仍有 68% 的余电，只可惜屏幕是在差强人意，否则外出刷剧还是不错的。
 * Type-C 视频输出：很不幸，笔者手上仅有的两个 Type-C 至 HDMI 视频转换头（一个多功能复合型，一个单纯视频输出）连接 Pinebook Pro 后目前都无法获得视频输出。 这方面社区维护了一个这个[接口视频转换器的兼容列表](https://wiki.pine64.org/wiki/Pinebook_Pro_Hardware_Accessory_Compatibility#USB_C_alternate_mode_DP)纪录现在兼容的 Type-C 视频输出。相信随着后续 Kernel 版本的更新和 [Pine64 自己 Docking Station 的推出](https://www.youtube.com/channel/UCxQKHvKbmSzGMvUrVtJYnUA)，这个方面的状况近期应该就会得到改善。
-* 无线模块相关：由于未知原因，[PineBook Pro 无法连接启用了 802.11r Fast Roaming 的无线热点](https://forum.pine64.org/showthread.php?tid=11960)，这个功能是 WiFi 5 协议中的标准扩展，在不少高端 Mesh 路由中或者 OpenWrt 固件都会启用，用来改善无线设备在共用相同 SSID 的多个路由间漫游时的丢包情况。考虑到这个问题也[出现在使用 Manjaro 的 Pinephone](https://forum.manjaro.org/t/pinephone-cannot-connect-to-wifi-networks-where-fast-roaming-ieee-802-11r-is-active/37968) 上，两者 SoC 并不相同，故笔者在软件或者内核问题，而非硬件本身。
+* 无线模块相关：由于未知原因，[PineBook Pro 无法连接启用了 802.11r Fast Roaming 的无线热点](https://forum.pine64.org/showthread.php?tid=11960)，这个功能是 WiFi 5 协议中的标准扩展，在不少高端 Mesh 路由中或者 OpenWrt 固件都会启用，用来改善无线设备在共用相同 SSID 的多个路由间漫游时的丢包情况。考虑到这个问题也[出现在使用 Manjaro 的 Pinephone](https://forum.manjaro.org/t/pinephone-cannot-connect-to-wifi-networks-where-fast-roaming-ieee-802-11r-is-active/37968) 上，两者 SoC 并不相同，故笔者推测问题在软件或者内核问题，而非硬件本身。
+
+#### Armbian Focal Xfce ####
+
+出于偶然的机会，又将 [Armbian Focal Xfce](https://www.armbian.com/pinebook-pro/) 的 SD 卡插入 Pinebook Pro 引导了，这次重点尝试了在 Manjaro KDE 上不尽人意的地方，没想到有惊喜：
+
+* Type-C 视频输出：和 Manjaro 问题倍出的状态不同，Armbian 的 Rockchip64 主线 5.9.14 内核对于 Type-C 视频输出良好，4K 和超宽屏都可以使用，且可同时利用 Type-C 坞站的 PD 充电功能，只可惜无法通过 HDMI 实现音频输出。
+* 无线模块相关：Manjaro 上无法连接 802.11r 无线热点的奇葩问题在 Armbian 上并不存在，证实了之前为软件异常而非硬件缺陷的猜想。
 
 #### 其他发行版 ####
 
-随着 RK3399 在内核方面的主线化支持，为越来越多的发行版支持 Pinebook Pro 提供了基础。目前 [Debian](https://lists.debian.org/debian-devel-announce/2020/12/msg00001.html) 预期将在下个版本正式支持，而 [Fedora](https://ask.fedoraproject.org/t/fedora-33-for-pinebook-pro/9892) 也已经在路上了。
+随着 RK3399 在内核态的主线支持的完善，越来越多的发行版开始支持 Pinebook Pro。目前 [Debian](https://lists.debian.org/debian-devel-announce/2020/12/msg00001.html) 预期将在下个版本正式支持，而 [Fedora](https://ask.fedoraproject.org/t/fedora-33-for-pinebook-pro/9892) 也已经在路上了。
 
 ### 总结 ###
 
