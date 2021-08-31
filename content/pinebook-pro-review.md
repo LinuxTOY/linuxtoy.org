@@ -7,6 +7,8 @@ Authors: lovenemesis
 
 2020 年的电子产品为消费者钱包考虑甚多：光发布，买不到。自从去年底得知 [Pinebook Pro](https://www.pine64.org/pinebook-pro/) 的存在和年初的小范围发售后，上半年笔者遍尝各种渠道尝试购入一台，毕竟全尺寸 ARM 笔记本并不是那么常见。究其无果后下半年最终在[某宝](https://item.taobao.com/item.htm?id=626530998190)额外支付了相对海外税前定价 50% 的费用（官方定价 $199，国内“官方代理”标价 ￥1999，笔者订单价 ￥2198 约合 $300）后， 又开启了的一轮似乎更有盼头的等待。终于在 Apple 都憋出了同样是基于 ARM 的 MacBook Air 之后，笔者在本月初收到了 PineBook Pro，经过一周的使用和折腾后，跟大家分享下体验。遵循本站一贯的风格，本文绝对跟您在其他地方读到过关于 PineBook Pro 的评测不同。
 
+**2021 年 8 月 再度更新**
+
 <!-- PELICAN_END_SUMMARY -->
 
 ### 配置及对比平台 ###
@@ -51,18 +53,25 @@ Pinebook Pro 特别为系统折腾者考量，默认启动顺序为 SD 卡、USB
 
 Manjaro 20.10 提供的开箱体验虽不比 Fedora Workstation 和 GNOME 高度集成的初始化设置，但其友好性还是略胜 Armbian。在终端界面设置了常用用户名和密码后很快便启动图形化界面，进入 Xfce 环境，内存占有与保持了与 Armbian 相近的 630M 左右，然后……然后很快的发现触控板不支持 Tap-to-Click 轻触即点击！Pinebook Pro 和近些年的大多数的笔记本一样，触控板部分并没有独立的实体键，在没有“轻触即点击”的情况下只能通过按压左下方和右下方的方式模拟鼠标操作，相当不便。同时多点触控滚动手势也随之丢失……这个对于笔记本的使用场景来说体验降分非常严重的问题竟然在 Manjaro Xfce 版被忽视了实在让笔者感到惊讶。经过搜索发现这个是 Manjaro Xfce 版本的普遍问题，但在根据说明折腾了一圈 libinput 配置后并没有什么改观……但在 Pinebook Pro 上情况似乎更令人迷惑的是一些，因为同样的 libinput 的配置在 Armbian Focal Xfce 则完全没有这个问题……
 
-好吧，既然 Pinebook Pro 提供了拔插 SD 卡即可更换系统的便利，看来现在就是利用此技能的时候了，于是……
-
 #### Manjaro Pinebook Pro KDE ####
 
 作为第二批 Pinebook Pro 的默认预装系统，Manjaro KDE 版本在开箱体验上明显得到了足够的打磨，进入图形化界面后这方面的优势展现无疑：首先，触控板如预期那般支持“轻触即点击”和多点触控滚动手势；其次 KDE 充分利用了 Panforst 的 OpenGL 加速效果，整体桌面体验上流畅度和视觉效果兼顾。但深入体验下来，还是能发现一些值得更进一步改善的地方。
 
-* 触控板右键：尽管触控板手势默认支持了，但响应程度并不如预期，特别是双指右键常常没相应。好在 [Wiki 上给出了微调的方式](https://wiki.pine64.org/wiki/Pinebook_Pro#X-Windows_.26_trackpad_settings)，在 KDE 环境下可以通过“系统设置” - “触摸板” 调整其 “最大时间” 参数实现。
+* 触控板右键：尽管触控板手势默认支持了，但响应程度并不如预期，特别是双指右键常常没响应。好在 [Wiki 上给出了微调的方式](https://wiki.pine64.org/wiki/Pinebook_Pro#X-Windows_.26_trackpad_settings)，在 KDE 环境下可以通过“系统设置” - “触摸板” 调整其 “最大时间” 参数实现。
 * 网页浏览：预装的 Firefox 虽然版本紧跟发布，但由于 Panforst 的缘故并无法启用 WebRender，而强行启用会导致部分页面花屏的情况，所以虽然流畅，但是渲染速度**逊色**于相近价位上 X86 的 Linux 笔记本。另外角度，由于 Widevine DRM 模块没有预编译的 ARMv8 版本，部分需要此模块的在线视频站点会无法正常使用，但社区提供了一个 [Docker 当作临时措施](https://wiki.pine64.org/wiki/Pinebook_Pro#Watching_DRM_content_.28Netflix.2C_etc..29)部分解决。
 * 中文支持：得益于 KDE 国际化的良好支持，系统已经预装了 noto 字体，不会有豆腐块的情况。但中文输入法的配置却不像 GNOME 环境下那么便捷。首先 Manjaro 没有像 Ubuntu 那样提供类似“Language Support”的图形化工具，一站式的搞定应用软件语言包、输入法框架和环境变量设置等配置，需要用户根据需求手动安装各个组建并配置。其次 KDE 环境下首推的 FCITX5 输入法框架在 Pinebook Pro 上候选字选择栏渲染花屏，这恐怕还是 Panfrost 的问题……最终，参照 [Arch IBus Wiki](https://wiki.archlinux.org/index.php/IBus) 上配置完成中文输入法。
 * 硬件解码：尽管 SoC 不同，但这方面和 [Pine64 的状态类似](https://linuxtoy.org/archives/lightweight-portable-desktop-with-pine64.html)，内核部分的支持在最新的 5.9 中已经包含，但是对应用户态的库和应用软件的支持都还尚在进行中。于是现阶段视频解码工作只能依赖 CPU 部分软解码实现。这方面经过测试，1080P 24FPS/30FPS 的视频回放（例如 B 站的 1080P）没有问题，此时 CPU 占有率约 70%，更高码率的 1080P 60FPS （例如 B 站大会员的 1080P+ ）则会导致 CPU 占有率飙升至 80% 以上，出现高达 30% 丢帧的情况。这样的性能意味着大多数互联网视频和本地视频观看是不受影响的。同时得益于 ARM 本身较低的功耗和温控，续航时间颇有保证，笔者尝试了在 WiFi 5 网络下全屏播放 [B 站的 2020 Game Awards](https://www.bilibili.com/video/BV15z4y1C7nD)结束后仍有 68% 的余电，只可惜屏幕是在差强人意，否则外出刷剧还是不错的。
 * Type-C 视频输出：很不幸，笔者手上仅有的两个 Type-C 至 HDMI 视频转换头（一个多功能复合型，一个单纯视频输出）连接 Pinebook Pro 后目前都无法获得视频输出。 这方面社区维护了一个这个[接口视频转换器的兼容列表](https://wiki.pine64.org/wiki/Pinebook_Pro_Hardware_Accessory_Compatibility#USB_C_alternate_mode_DP)纪录现在兼容的 Type-C 视频输出。相信随着后续 Kernel 版本的更新和 [Pine64 自己 Docking Station 的推出](https://www.youtube.com/channel/UCxQKHvKbmSzGMvUrVtJYnUA)，这个方面的状况近期应该就会得到改善。
 * 无线模块相关：由于未知原因，[PineBook Pro 无法连接启用了 802.11r Fast Roaming 的无线热点](https://forum.pine64.org/showthread.php?tid=11960)，这个功能是 WiFi 5 协议中的标准扩展，在不少高端 Mesh 路由中或者 OpenWrt 固件都会启用，用来改善无线设备在共用相同 SSID 的多个路由间漫游时的丢包情况。考虑到这个问题也[出现在使用 Manjaro 的 Pinephone](https://forum.manjaro.org/t/pinephone-cannot-connect-to-wifi-networks-where-fast-roaming-ieee-802-11r-is-active/37968) 上，两者 SoC 并不相同，故笔者推测问题在软件或者内核问题，而非硬件本身。
+
+**2021 年 8 月更新**
+
+在 [Manjaro 代号 Pahvo 的 21.1.0 发布](https://forum.manjaro.org/t/manjaro-21-1-0-pahvo-released/78663)之后再次尝试了 Xfce 版本，得益于更新的 Kernel 5.13 和 Mesa 21.1.6 版本，整体情况得到了显著性提高：
+* 触控板: 之前缺失的“轻触即点击”功能正常出现，右键响应也比较正。此外，还可以自定义输入时禁用触摸板的延迟时间，测试了基本上 "0.5s" 比较合适。
+* 网页浏览：Firefox 自身的进步足以使启用基于软件的 WebRender 了，渲染流畅度有些许改善，但距离具备 GPU 加速的 X86 笔记本还是**逊色**一些。
+* 硬件解码：由于用户态库和应用软件支持仍然缺失，所以大体上情况和 Kernel 5.9 时期一致。这次测试了一些 B 站上科隆游戏展的视频，H264 编码的 1080P 30FPS 的视频粗看没什么问题，但打开播放器的统计信息还是能看到丢帧的情况时不时的发生，总体比率在 1% 左右。
+* Type-C 视频输出：依然无法支持笔者手头上的两个视频转换头……
+* 无线模块相关：暂时没尝试对于 802.11r 的兼容性是否改善。
 
 #### Armbian Focal Xfce ####
 
@@ -71,9 +80,20 @@ Manjaro 20.10 提供的开箱体验虽不比 Fedora Workstation 和 GNOME 高度
 * Type-C 视频输出：和 Manjaro 问题倍出的状态不同，Armbian 的 Rockchip64 主线 5.9.14 内核对于 Type-C 视频输出良好，4K 和超宽屏都可以使用，且可同时利用 Type-C 坞站的 PD 充电功能，只可惜无法通过 HDMI 实现音频输出。
 * 无线模块相关：Manjaro 上无法连接 802.11r 无线热点的奇葩问题在 Armbian 上并不存在，证实了之前为软件异常而非硬件缺陷的猜想。
 
-#### 其他发行版 ####
+**2021 年 8 月更新**
 
-随着 RK3399 在内核态的主线支持的完善，越来越多的发行版开始支持 Pinebook Pro。目前 [Debian](https://lists.debian.org/debian-devel-announce/2020/12/msg00001.html) 预期将在下个版本正式支持，而 [Fedora](https://ask.fedoraproject.org/t/fedora-33-for-pinebook-pro/9892) 也已经在路上了。
+当愉快的使用了几个月之后，在 6 月底的一次系统更新后，遇到了 lightdm 无法启用的问题。对比同期使用完全一样软件配置的 Pine64 则没有类似问题，推测是兼容性问题。由于 Armbian 官方对 Pinebook Pro 的定义为 Unsupported 状态，此类问题处于无处汇报亦无人问津的状态。看来 Armbian 在 Pinebook Pro 的生涯只能暂时告一段落了。
+
+#### Fedora 34 Unofficial ####
+
+因为 ARM 兴趣小组的主要开发者将精力放在受众更广的 Apple M1 芯片的支持上，Fedora 对于 Pinebook Pro 的正式支持并未如期而至，倒是社区的[热心开发者基于 Manjaro 的内核构建了与官方软件仓库兼容的 Unofficial 版本](https://github.com/bengtfredh/pinebook-pro-fedora-installer)，可以自行下载这个脚本构建一个适用于 Pinebook Pro 上使用的镜像。开发者也提供基于 Fedora 34 Btrfs 分区的预制版本，笔者在 SD 卡上试用了其 GNOME 版本。
+
+* 完整的 Fedora Workstation 体验，包括 Btrfs 分区、SELinux、Wayland 和 GNOME 40 桌面环境。
+* 软件更新使用官方仓库，与 X86 版本同步。内核使用来自 copr，更新频率随着 Manjaro。
+* 启动速度明显落后于 Manjaro 和 Armbian，通过 systemd-analyze 的结果来看，以启动 GDM 和无线模块相关的服务加载用时都比较长，相比在 X86 系统上，这些服务并不是加载耗时的项目，不知是否还是跟驱动有关。 
+* 目前 rpmfusion 仓库尚未完成对于 ARMv8 架构的支持，所以类似 VLC 之类的应用暂时用不成。
+
+另外 Fedora ARM 的主要开发者也给出了[手把手的教程](https://nullr0ute.com/2021/05/fedora-on-the-pinebook-pro/)，覆盖了从更新刷入 SPI 到最后 copr 仓库的添加在内全部环节。
 
 ### 总结 ###
 
