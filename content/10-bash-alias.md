@@ -45,7 +45,9 @@ TechRepublic 介绍了 10 个 Bash alias，个人觉得都很实用：
 
 -   fcicq：  
 
-    ` alias convmv-utf8=”convmv -f gbk -t utf-8 –notest” alias nano=”nano -w” alias emerge=”sudo emerge”`
+    `alias convmv-utf8=”convmv -f gbk -t utf-8 –notest”`
+    `alias nano=”nano -w”`
+    `alias emerge=”sudo emerge”`
 -   lostsnow：
     `alias ..=”cd ..”`
 -   zhuqin：
