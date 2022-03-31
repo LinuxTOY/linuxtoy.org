@@ -46,10 +46,10 @@ Win 系统本身提供了 BitLocker 的加密方案，和第三方提供的 Vera
 
 ### 在 UEFI 系统上修复引导错误 ###
 
-如果在上述系统分区加密向导过程中，在"操作系统数目"步骤参考了网上视频教程选择了“单系统”的话，在重启之后将无法使用 GRUB2 启动菜单的 Win 项目正确进入系统。究其原因，是 VeraCrypt 安装的 EFI 启动器以单系统下“先 VeraCrypt 后 Win 启动器”的方式配置。于是这里需要为 GRUB2 创建指向 VeraCrypt 启动器的条目。由于 os-probe 并不能正确识别加密的 Win 分区和 VeraCrypt 启动器，这个步骤需要手动完成：
+如果在上述系统分区加密向导过程中，在"操作系统数目"步骤参考了网上视频教程选择了“单系统”的话，在重启之后将无法使用 GRUB2 启动菜单的 Win 项目正确进入系统。究其原因，是 VeraCrypt 安装的 EFI 启动器以单系统下“先 VeraCrypt 后 Win 启动器”的方式配置。于是这里需要为 GRUB2 创建指向 VeraCrypt 启动器的条目。由于 `os-probe` 并不能正确识别加密的 Win 分区和 VeraCrypt 启动器，这个步骤需要手动完成：
 
 * 打开 `/boot/efi` 分区中的 `grub.cfg` 文件，找到关于 Win 引导字段的写法，如在 Fedora 系统这个是 `/boot/efi/EFI/fedora/grub.cfg` 文件中的以 `### BEGIN /etc/grub.d/30_os-prober ###` 开头的部分；
-* 编辑 `/etc/grub.d/40_custom` 文件，参考以上 Win 引导字段的内容，但将其中 chainloader 部分修改为指向 VeraCrypt 启动器： `chainloader /EFI/VeraCrypt/DcsBoot.efi` ；
+* 编辑 `/etc/grub.d/40_custom` 文件，参考以上 Win 引导字段的内容，但将其中 `chainloader` 部分修改为指向 VeraCrypt 启动器： `chainloader /EFI/VeraCrypt/DcsBoot.efi` ；
 * 为了便于区分，可以将标题部分也稍微修改下，和原始的 Win 的区分，通过编辑 `menuentry` 实现，随自己喜好；
 * 之后使用 `grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg` 重新生成 UEFI 分区下的 GRUB 配置文件。
 
@@ -57,11 +57,11 @@ Win 系统本身提供了 BitLocker 的加密方案，和第三方提供的 Vera
 
 ## 在 Linux 系统下自动挂载 VeraCrypt 加密分区 ##
 
-无论是使用 VeraCrypt 加密的 Win 系统分区还是共享数据分区，都可以通过 Linux 下的 VeraCrypt 客户端进行在登录系统后进行手动挂载。如果有需要的话，也可以配置自动挂载以方便使用。经过多次实践，有两种方式可以实现。
+无论是使用 VeraCrypt 加密的 Win 系统分区还是共享数据分区，都可以通过 Linux 下的 VeraCrypt 客户端进行在登录系统后进行手动挂载。如果有需要的话，也可以配置自动挂载以方便使用。
 
-### 使用 cryptsetup 和 fstab 进行自动挂载 ###
+### 使用 cryptsetup 和 fstab 进行自动挂载###
 
-在 cryptsetup 1.6.7 之后的版本增添了对于 VeraCrypt 格式的加密分区的有限支持，对于常用的单次 AES 加密和 SHA 哈希算法支持良好。这意味着可以复用 Linux 原生的 LUKS 跨架实现自动挂载，这里带来的便利是若 VeraCrypt 加密分区与 Linux LUKS 加密分区使用同样的密码，无需在启动时二次输入。
+在 cryptsetup 1.6.7 之后的版本增添了对于 VeraCrypt 格式的加密分区的有限支持，对于常用的单次 AES 加密和 SHA 哈希算法支持良好。这意味着可以复用 Linux 原生的 LUKS 框架实现自动挂载，这里带来的便利是若 VeraCrypt 加密分区与 Linux LUKS 加密分区使用同样的密码，无需在启动后再次输入。
 
 * 首先使用 `blkid` 找到 VeraCrypt 加密分区的 UUID，记录下来；
 * 根据 crypttab man 列举的格式，编辑 `/etc/crypttab` 文件添加上述记录的 UUID 分区，注意在 `option` 字段附上这些参数以识别 VeraCrypt 格式的加密分区：`tcrypt-veracrypt`；
@@ -73,21 +73,32 @@ Win 系统本身提供了 BitLocker 的加密方案，和第三方提供的 Vera
 
 ### 使用 VeraCrypt 客户端文本模式和 systemd 进行自动挂载 ###
 
-如果使用非 cryptsetup 支持的加密或者哈希算法，或者使用了层叠式加密的话，启动时自动挂载便只能使用 VeraCrypt 客户端的文本非交互模式实现了。为了达到该目的，需要利用的 VeraCrypt 命令行参数有：
+如果使用非 cryptsetup 支持的加密或者哈希算法，或者使用了层叠式加密的话，启动时自动挂载便只能使用 VeraCrypt 客户端的文本非交互模式实现了。为了实现该目的，需要利用的 VeraCrypt 命令行参数有：
 
 * `-t` 开启文本模式
 * `--non-interactive` 开启非交互式模式
 * `-k ""` 密钥文件位置，若是没有的话也需要传入空字符串
-* `--pim=0`PIM数值，创建时如未特殊指定的话用 `0` 代表默认值
+* `--pim=0` PIM数值，创建时如未特殊指定的话用 `0` 代表默认值
 * `-p [PASSWORD]` 明文密码
 * `-m [OPTION]` 加密分区挂载参数，如加密分区为系统分区的话需要指定 `system`
+* `--protect-hidden=no` 是否保护隐藏分区，如未使用的话选择 `no`
 * `--fs-options=[FS_OPTIONS]` 挂载文件系统参数，fstab 里的参数列的内容都可以填写到这里
-* `--mount [BLOCK_DEVICE]` 挂载设备
+* `[BLOCK_DEVICE]` 挂载设备
 * `[MOUNT_POINT]` 挂载点，任意目录都行
 
-组织好 `veracrypt` 的参数后只需要将其以任意方式在开机时执行即可，最简单的方式是利用 systemd 的 SystemV 的兼容模式，创建 `/etc/rc.d/rc.local` 文件并放入其中，这样借助 systemd 自动生成器的帮助它会在所有启动项目的最后执行。然而相信大多数采取此种方式的都是使用非常见算法或者层叠式加密的，这些算法在大多数硬件上由于没有硬件指令集的协助，处理速度都比较慢，所以若能在启动过程中更早的阶段开始当然是更好的了，于是这里推荐为其创建 system unit 文件并安装至 multi-user.target 的方式实现自动时自动挂载，参考其 systemd.unit man 手册实现即可，不再赘述。
+组织好 `veracrypt` 的参数后只需要将其以任意方式在开机时执行即可，最简单的方法是利用 systemd 的 SystemV 的兼容模式，创建 `/etc/rc.d/rc.local` 文件并放入其中，这样借助 systemd 自动生成器的帮助它会在所有启动项目的最后执行。然而相信大多数采取此种方式的都是使用非常见算法或者层叠式加密的，这些算法在大多数硬件上由于没有硬件指令集的协助，处理速度都比较慢，所以最好是在启动过程中更早的阶段开始执行了，于是这里推荐创建 system unit 文件并安装至 multi-user.target 的方式实现自动时自动挂载，参考其 systemd.unit man 手册实现即可，不再赘述。
+
+### 使用 VeraCrypt 客户端 GUI 模式在登录桌面后自动挂载 ###
+
+借鉴其 Win 系统下的思路，对于以图形界面为主且未使用 LUKS 对系统盘加密的工作站环境配置，可以配置在登录后的自动挂载使用 VeraCrypt 加密的数据卷：
+
+* 在 VeraCrypt 客户端中将欲挂载的设备分区添加为收藏加密卷
+* 将 VeraCrypt 的 .desktop 文件复制到主要用户的 `.config/autostart` 目录下
+* 编辑 `Exec=` 增加 `--background-task --auto-mount=favorites` 两个参数
+
+这样在下次登录至图形界面后，VeraCrypt 会自动启动并询问管理员密码和密码以挂载加密卷。
 
 ## 总结 ##
 
-其实如果追求安全的话，不使用 Win 系统是最省心的，或者在全盘加密的 Linux 系统下使用虚拟机是最可靠的了。不过如果您无论由于什么原因仍需要保持一个双引导的环境的话，那么通过本文的介绍使得您能放心的采取 VeraCrypt 保护个人数据安全。
+其实如果追求安全的话，不使用 Win 系统是最省心的，或者在全盘加密的 Linux 系统下使用虚拟机了。不过如果您无论出于什么原因仍需要维护一个双引导的环境的话，那么通过本文的介绍使得您能有效的运用 VeraCrypt 来保护个人数据安全。
 
