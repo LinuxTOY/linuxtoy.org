@@ -34,7 +34,7 @@ personalDNSfilter 的特点有：
 
 ### 桌面 Linux 版本配置 ###
 
-在[官方的完整安装包](https://www.zenz-solutions.de/?smd_process_download=1&download_id=67)中提供了适用于 Win 系统的配置脚本，但缺乏针对 Linux 平台的。笔者据此撰写了一套适用于基于 bash 和 systemd 的 Linux 系统配置脚本，已经提交上游，将会在后续版本随完整安装包发布。现阶段可以[从 Issue 下载附件使用](https://github.com/IngoZenz/personaldnsfilter/issues/190)。
+自 [1.50.52.2 版本](https://github.com/IngoZenz/personaldnsfilter/releases/tag/1.50.52.2)之后，在[官方的完整安装包](https://www.zenz-solutions.de/?smd_process_download=1&download_id=67)中提供了适用于 Win 和 Linux 系统的配置脚本，可以阅读其 README 之后直接使用。
 
 如果已经配置好了 Android 版本的话，可以将其 `dnsfilter.conf` 文件复制到完整安装包解压后的文件夹中直接使用，非常的方便。
 
