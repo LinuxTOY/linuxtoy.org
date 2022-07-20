@@ -7,7 +7,7 @@ Authors: lovenemesis
 
 2020 年的电子产品为消费者钱包考虑甚多：光发布，买不到。自从去年底得知 [Pinebook Pro](https://www.pine64.org/pinebook-pro/) 的存在和年初的小范围发售后，上半年笔者遍尝各种渠道尝试购入一台，毕竟全尺寸 ARM 笔记本并不是那么常见。究其无果后下半年最终在[某宝](https://item.taobao.com/item.htm?id=626530998190)额外支付了相对海外税前定价 50% 的费用（官方定价 $199，国内“官方代理”标价 ￥1999，笔者订单价 ￥2198 约合 $300）后， 又开启了的一轮似乎更有盼头的等待。终于在 Apple 都憋出了同样是基于 ARM 的 MacBook Air 之后，笔者在本月初收到了 PineBook Pro，经过一周的使用和折腾后，跟大家分享下体验。遵循本站一贯的风格，本文绝对跟您在其他地方读到过关于 PineBook Pro 的评测不同。
 
-**2021 年 8 月 再度更新**
+**2022 年 7 月第三次更新**
 
 <!-- PELICAN_END_SUMMARY -->
 
@@ -95,6 +95,18 @@ Manjaro 20.10 提供的开箱体验虽不比 Fedora Workstation 和 GNOME 高度
 * 目前 rpmfusion 仓库尚未完成对于 ARMv8 架构的支持，所以类似 VLC 之类的应用暂时用不成。
 
 另外 Fedora ARM 的主要开发者也给出了[手把手的教程](https://nullr0ute.com/2021/05/fedora-on-the-pinebook-pro/)，覆盖了从更新刷入 SPI 到最后 copr 仓库的添加在内全部环节。
+
+**2022 年 7 月更新**
+
+#### Manjaro Pinebook Pro GNOME ####
+
+Manjaro 在 2022 年为 Pinebook Pro 推出了新的 GNOME 版本的镜像。安装方面与之前版本无异，但是相对于 Unofficial 的 Fedora Workstaton：
+
+* 有着紧跟上游的最新内核，包含了**成熟的 Hantro VPU 硬件解码和 OpenGL 3.0 的支持**，默认使用 Wayland 窗口协议。
+* 保持了较快的启动速度。
+* Type-C 视频输出和 802.11r 的问题依旧……
+
+按照现在的状态来说，Pinebook Pro 上的体验说不定比 [Apple M2 上运行 Linux 的体验](https://asahilinux.org/2022/07/july-2022-release/)还要好呢……
 
 ### 总结 ###
 
