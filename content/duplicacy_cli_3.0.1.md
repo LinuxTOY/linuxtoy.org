@@ -1,11 +1,11 @@
 Title: Duplicacy 3.0.1 发布
 Date: 2022-10-09 22:00
-Category: Howto
+Category: App
 Tags: go, backup
 Slug: duplicacy_cli_3.0.1
 Authors: lovenemesis
 
-[Duplicacy](https://duplicacy.com/home.html) 是一款跨平台的开源文件备份工具，在提供健壮的增量式备份机制的同时又不依赖所以索引数据库，独具一格。最近发布了其[命令行 3.0.1 版本](https://github.com/gilbertchen/duplicacy/releases/tag/v3.0.1)。
+[Duplicacy](https://duplicacy.com/home.html) 是一款跨平台的开源文件备份工具，在提供健壮的增量式备份机制的同时又不依赖索引数据库，独具一格。最近发布了其[命令行 3.0.1 版本](https://github.com/gilbertchen/duplicacy/releases/tag/v3.0.1)。
 
 相对于其他开源文件备份工具诸如 [duplicity](https://duplicity.gitlab.io/) / [Deja Dup](https://wiki.gnome.org/Apps/DejaDup) 和 [BorgBackup](https://www.borgbackup.org/) / [Pika Backup](https://apps.gnome.org/app/org.gnome.World.PikaBackup/)，Duplicacy 有如下特点：
 
