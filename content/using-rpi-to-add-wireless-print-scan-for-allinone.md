@@ -15,7 +15,7 @@ Authors: lovenemesis
 * Android 客户端使用厂商中立的 [Mopria 系列应用](https://mopria.org/)；
 * 远程功能限制到局域网内，避免不必要的信息外溢；
 
-下面将以在 Raspberry Pi 3+ 上完成基本配置的 Debian 10 / Raspberry Pi OS 配合通过 USB 接口连接的 HP Deskjet 的入门打印一体机作为范例来介绍下配置过程。
+下面将以在 Raspberry Pi 3+ 上完成基本配置的 Debian 11 / Raspberry Pi OS 配合通过 USB 接口连接的 HP Deskjet 的入门打印一体机作为范例来介绍下配置过程。
 
 ## 打印服务器端配置 ##
 
@@ -48,7 +48,7 @@ Android 手机自带的打印服务对于 IPP 的支持有限，建议前往 [Mo
 虽说 Linux 环境下的 SANE 本身提供网络共享服务进程 `saned` ，但与其对应在 [Android 系统上的前端](https://play.google.com/store/apps/details?id=com.sane.droid)早已年久失修，无法在最新的 Android 13 权限下保存扫描结果。
 于是这里转而使用 AirSane 通过跨平台兼容性更好的 AirScan 协议将扫描功能在局域网共享出来。
 
-1. 由于软件相对较新，尚未被 Debian 收录，所以需要从 [AirSane Github 仓库](https://github.com/SimulPiscator/AirSane/releases)下载最新 Release 版本源代码进行编译，本文截稿时为 0.3.5 版本；
+1. 由于软件相对较新，尚未被 Debian 11 收录，所以需要从 [AirSane Github 仓库](https://github.com/SimulPiscator/AirSane/releases)下载最新 Release 版本源代码进行编译，本文截稿时为 0.3.5 版本；
 2. 之后安装必要的编译依赖环境：`sudo apt install libsane-dev sane-utils libjpeg-dev libpng-dev libavahi-client-dev avahi-daemon libusb-1.*-dev git cmake g++` ；
 3. AirSane 使用 cmake 构建，遵循其常规解压并创建构建目录：`tar xf AirSane-0.3.5.tar.gz && mkdir AirSane-build && cd AirSane-build` ；
 4. 构建编译依赖并开始编译，该软件体积小巧，哪怕在树梅派也仅需不到三分钟：`cmake ../AirSane-0.3.5 && make` ；
