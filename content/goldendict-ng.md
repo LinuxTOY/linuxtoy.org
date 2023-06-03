@@ -2,7 +2,7 @@ Title: GoldenDict-ng 多格式字典查询软件
 Date: 2023-06-03 15:19
 Category: App
 Tags: 
-Slug: goldendict-nt
+Slug: goldendict-ng
 Authors: slbtty
 
 GoldenDict-ng 是一款开源、功能全面、多格式的字典软件，可以在查询一个单词的时候从多本词典中显示结果。
