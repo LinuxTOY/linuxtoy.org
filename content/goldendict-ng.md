@@ -1,5 +1,5 @@
 Title: GoldenDict-ng 多格式字典查询软件
-Date: 2022-06-03 15:19
+Date: 2023-06-03 15:19
 Category: App
 Tags: 
 Slug: goldendict-nt
