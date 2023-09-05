@@ -47,9 +47,17 @@ Authors: lovenemesis
 
 官方已经开始收集对于[此类硬件缺陷的反馈](https://forum.pine64.org/showthread.php?tid=12415)了，这里只能期待后续版本能在保持亲民的售价上改善做工了。
 
-SoC 和内存等组件和软件紧密相关，不同发行版上的体验还真有那么一些差别，所以且容笔者慢慢道来。
+**2023 年 9 月更新**
+
+感谢远在大洋彼岸的友人，经过一系列的过程，笔者收到了 [官方的维修替换件](https://pine64.com/product/pinebook-pro-palm-case-with-ansi-keyboard/)，跟随[官方 Wiki 上不那么细致的指南](https://wiki.pine64.org/wiki/Pinebook_Pro#Basic_summary_of_replacing_keyboard)，到也是成功完成了替换。这里有几点想分享的：
+
+* 银色的胶带通常位于接口附近做防静电用途，可不是随便贴的。最好的方法是拍照记录位置。
+* 第七步显示屏的分离其实稍微打开一些更便捷，后续装上也是。
+* 最难的部分其实是第八步的触控板的分离，笔者同时使用了[三个 iFixit 的拆机片](https://www.ifixit.com/products/essential-electronics-toolkit?pk_vid=850e2a99be07f0a01693915664d89c8b)才安全剥离。
 
 ### 软件体验 ###
+
+SoC 和内存等组件和软件紧密相关，不同发行版上的体验还真有那么一些差别，所以且容笔者慢慢道来。
 
 Pinebook Pro 特别为系统折腾者考量，默认启动顺序为 SD 卡、USB 接口最后是内置 eMMC，PCIE 的 NVME 是不能用作系统引导的。这种引导顺序代表着完全可以将 SD 卡中的系统当作主力系统使用，尝试多个不同系统也仅需替换下 SD 卡即可。若之后是对 SD 卡中系统满意，则可以便捷的使用 `dd` 将镜像写入至 eMMC 即可。速度方面，本来其内置 eMMC 也仅仅是处于中阶水平，读写性能跟 SanDisk Extreme 接近。所以若是手头 SD 卡足够快的话，完全不必纠结写入 eMMC。
 
@@ -59,7 +67,7 @@ Pinebook Pro 特别为系统折腾者考量，默认启动顺序为 SD 卡、USB
 
 这个体验的开始过于顺畅，而结束却又过于突然……
 
-Manjaro 20.10 提供的开箱体验虽不比 Fedora Workstation 和 GNOME 高度集成的初始化设置，但其友好性还是略胜 Armbian。在终端界面设置了常用用户名和密码后很快便启动图形化界面，进入 Xfce 环境，内存占有与保持了与 Armbian 相近的 630M 左右，然后……然后很快的发现触控板不支持 Tap-to-Click 轻触即点击！Pinebook Pro 和近些年的大多数的笔记本一样，触控板部分并没有独立的实体键，在没有“轻触即点击”的情况下只能通过按压左下方和右下方的方式模拟鼠标操作，相当不便。同时多点触控滚动手势也随之丢失……这个对于笔记本的使用场景来说体验降分非常严重的问题竟然在 Manjaro Xfce 版被忽视了实在让笔者感到惊讶。经过搜索发现这个是 Manjaro Xfce 版本的普遍问题，但在根据说明折腾了一圈 libinput 配置后并没有什么改观……但在 Pinebook Pro 上情况似乎更令人迷惑的是一些，因为同样的 libinput 的配置在 Armbian Focal Xfce 则完全没有这个问题……
+Manjaro 20.10 提供的开箱体验虽不比 Fedora Workstation 和 GNOME 高度集成的初始化设置，但其友好性还是略胜 Armbian。在终端界面设置了常用用户名和密码后很快便启动图形化界面，进入 Xfce 环境，内存占有与保持了与 Armbian 相近的 630M 左右，然后……然后很快的发现触控板不支持 Tap-to-Click 轻触即点击！Pinebook Pro 和近些年的大多数的笔记本一样，触控板部分并没有独立的实体键，在没有“轻触即点击”的情况下只能通过按压左下方和右下方的方式模拟鼠标操作，相当不便。同时多点触控滚动手势也随之丢失……这个对于笔记本的使用场景来说体验降分非常严重的问题竟然在 Manjaro Xfce 版被忽视了实在让笔者感到惊讶。经过搜索发现这个是 Manjaro Xfce 版本的普遍问题，但在根据说明折腾了一圈 libinput 配置后并没有什么改观……但在 Pinebook Pro 上情况似乎更令人迷惑一些，因为同样的 libinput 的配置在 Armbian Focal Xfce 则完全没有这个问题……
 
 #### Manjaro Pinebook Pro KDE ####
 
