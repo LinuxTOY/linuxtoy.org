@@ -56,6 +56,7 @@ Authors: lovenemesis
 * 除非使用的是 AMD ROCm 正式支持的显卡，绝大部分消费级别显卡需要添加环境变量以声明显卡型号，例如笔者使用的 Radeon 7800 XT 启动时需要添加 `HSA_OVERRIDE_GFX_VERSION=11.0.0`
 * 直接在 `stable-diffusion-webui-1.7.0` 目录下运行 `launch.py --listen` 即可，比如笔者为 `HSA_OVERRIDE_GFX_VERSION=11.0.0 python launch.py --listen`
 * 如果需要使用 WebUI 的插件支持的话，参照[其 Github Wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Extensions) 添加运行时参数 `--enable-insecure-extension-access`
+* 如果想用脚本方式将上述启动过程一次性整合到的话，可以使用 `conda run` 的方式，比如 `conda run -n py311 --live-stream HSA_OVERRIDE_GFX_VERSION=11.0.0 python launch.py --listen --enable-insecure-extension-access`
 * 更多的 Checkpoint 和 Refiner 可以[在 Hugging Face 找到](https://huggingface.co/stabilityai)。
 * 工作的时候可以在另一个终端使用 `watch -n 1 -d rocm-smi` 监控 GPU 加速的运行状态。
 
