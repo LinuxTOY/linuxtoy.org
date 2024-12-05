@@ -5,11 +5,11 @@ Tags: fedora, llm
 Slug: local-code-assistant-with-llamafile-and-continue
 Authors: lovenemesis
 
-继“数字货币”和“区块链”之后，IT 业界目前最火的概念毫无疑问就是 “AI“ 了。些许值得庆幸的是，在经过一年多的发展后，名为 “AI” 实为 “LLM（大语言模型）”的领域已经有一些较为成熟的方案允许在本地的硬件上运行起来，充分满足有隐私顾虑和网络限制的场景。本文将以 Fedora 41 为例介绍涉及的工具和对应的配置基于大语言模型的代码助手，其思路及基本步骤亦适用于 OSX 及 Windows 系统。
+继“数字货币”和“区块链”之后，IT 业界目前最火的概念毫无疑问就是 “AI“ 了。些许值得庆幸的是，在经过一年多的发展后，名为 “AI” 实为 “LLM（大语言模型）”的领域已经有一些较为成熟的本地运行的方案，可以满足有隐私顾虑和网络受限的场景。本文将以 Fedora 41 为例介绍涉及的工具和对应的配置，搭建基于大语言模型的代码助手，其思路及基本步骤亦适用于 OSX 及 Windows 系统。
 
 ## Llamafile: 本地运行 LLM 的分发和部署环境
 
-[Llamafile](https://github.com/Mozilla-Ocho/llamafile) 是来自 [Mozilla Ocho](https://github.com/Mozilla-Ocho) 的一个开源项目，提供了分发和部署 LLM  运行环境的简便方法。相比于其他流行的在本地 LLM 部署方式（比如 [ollama](https://github.com/ollama/ollama) 或者 [LlamaEdge](https://github.com/LlamaEdge/LlamaEdge) ），Llamafile 的优势有：
+[Llamafile](https://github.com/Mozilla-Ocho/llamafile) 是来自 [Mozilla Ocho](https://github.com/Mozilla-Ocho) 的一个开源项目，提供了分发和部署 LLM  运行环境的简便方法。相比于其他流行的本地 LLM 部署方式（比如 [ollama](https://github.com/ollama/ollama) 或者 [LlamaEdge](https://github.com/LlamaEdge/LlamaEdge) ），Llamafile 的优势有：
 
 * 单一二进制文件即可实现运行**跨平台**（Linux、OSX 及 Windows）**跨架构**（X86_64 及 ARM64）运行
 * 本身**无需安装**即可直接运行，无需处理繁复的依赖关系
@@ -17,9 +17,9 @@ Authors: lovenemesis
 * 以沙箱方式运行的**兼容于 OpenAI 接口服务**，安全且无缝衔接各类第三方 AI 应用
 * 可以将运行时环境、模型文件和运行参数**封装成一个文件**，便于分发
 
-更多的详情可以参考项目的[首页说明文件](https://github.com/Mozilla-Ocho/llamafile/blob/main/README.md)。其项目也提供了一些流行 LLM 模型的预封装文件，下载后即可运行。
+更多的详情可以参考项目的[首页说明文件](https://github.com/Mozilla-Ocho/llamafile/blob/main/README.md)。该项目也提供了一些流行 LLM 模型的预封装文件，下载后即可运行。
 
-由于我们接下来要使用在代码助手领域使用的模型并未预先封装，所以我们只需要下载最新的 `llamafile` 文件用作运行时环境即可：
+由于我们接下来用于代码助手领域的大语言的模型并未预先封装，所以我们只需要下载最新的 `llamafile` 文件用作运行时环境即可：
 
 1. 前往[项目发布页面](https://github.com/Mozilla-Ocho/llamafile/releases)，下载最新发布版本 `Assets` 中的 `llamafile-X.X.X`文件，本文撰写时为 `llamafile-0.8.17`
 2. 将下载好的文件放到任意一个自己觉得合适的位置，比如 `mv -v llamafile-0.8.16 $HOME/bin/llamafile`
@@ -28,11 +28,11 @@ Authors: lovenemesis
 
 ## 模型文件: Qwen2.5-coder
 
-有了运行时环境，接下来就需要 LLM 的模型文件本身了。本文撰写时，专注于代码生成领域相对较新的开源的 LLM 是 [Qwen2.5-coder](https://qwen2.org/qwen2-5-coder/)，支持 92 种编程语言，和中英两种自然语言，提供了接近 GPT3.5-Turbo 的性能。
+有了运行时环境，接下来就需要 LLM 的模型文件本身了。本文撰写时，专注于代码生成领域相对较新的开源的 LLM 是 [Qwen2.5-coder](https://qwen2.org/qwen2-5-coder/)，支持 92 种编程语言和中英两种自然语言，其 7B 版本提供了接近 GPT3.5-Turbo 的性能，而 32B 则更是比肩 GPT4o。
 
-大语言模型文件以多种格式分发，隶属于 [llama.cpp](https://github.com/ggerganov/llama.cpp) 家族的 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 需要配合 `GGUF` 格式使用。同时受限于本地设备的性能和显存，需要选择体积较小的量化后版本。结合上述限制，再依据代码助手和设备性能的使用场景，**需要搭配使用两种训练风格的模型文件**：
+大语言模型文件以多种格式分发，隶属于 [llama.cpp](https://github.com/ggerganov/llama.cpp) 家族的 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 需要配合 `GGUF` 格式使用。同时受限于本地设备的性能和显存，需要选择体积较小的量化后版本。结合上述限制，再依据代码助手的使用场景，**需要搭配使用两种训练风格的模型文件**：
 
-*  Instruct 风格适合对于自然语言指令的理解并将据此生成代码：[通义千问2.5-代码-7B-Instruct-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/master/qwen2.5-coder-7b-instruct-q5_k_m.gguf)（显存少于 12G）或[通义千问2.5-代码-17B-Instruct-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/master/qwen2.5-coder-14b-instruct-q5_k_m.gguf)（显存大于或等于 12G）
+*  Instruct 风格适合对于自然语言指令的理解并将据此生成代码：[通义千问2.5-代码-7B-Instruct-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/master/qwen2.5-coder-7b-instruct-q5_k_m.gguf)（显存少于 12G）或[通义千问2.5-代码-14B-Instruct-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/master/qwen2.5-coder-14b-instruct-q5_k_m.gguf)（显存大于或等于 12G）
 * Base 风格适合根据上下文代码或文字做自动补充：[Qwen2.5-Coder-1.5B-GGUF](https://www.modelscope.cn/models/QuantFactory/Qwen2.5-Coder-1.5B-GGUF/resolve/master/Qwen2.5-Coder-1.5B.Q5_K_M.gguf)（显存少于 12G）或[Qwen2.5-Coder-7B-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/master/qwen2.5-coder-14b-instruct-q5_k_m.gguf)（显存大于或等于 12G）
     
 模型文件较大，下载完成需要一定的时间，之后将其挪动到任意一个自己觉得合适的位置，比如 `$HOME/gguf`。后续以显存少于 12G 的模型示例，若显存充裕请自行替换相应模型名称即可。
@@ -63,7 +63,7 @@ A chat between a curious human and an artificial intelligence assistant. The ass
 
 上述的指令便足以在使用最新内核的 Fedora 41 上的调用 AMD 7000 系列显卡实现推理加速。若是上述指令显示的是使用 CPU 加速，可能需要根据配置和操作系统不同设定 `HSA_OVERRIDE_GFX_VERSION` 环境变量或者额外传入 `--nocompile` 参数，可以参考 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 的项目首页进一步获知，在此不再赘述。
 
-试着跟它对话几句后，感受下性能，之后使用 `Ctrl +C` 退出并结束。在代码助手使用场景的交互场景，只需要有 “OpenAI 兼容 API” 的服务即可。接下来，无论是使用诸如 [zellij](https://github.com/zellij-org/zellij) 之类的终端分屏器或者打开两个标签页的方式，**分别以仅服务器模式启动两个模型**，如果遵循上面的假设存放路径的话，那么完整的命令为：
+试着跟它对话几句后，感受下性能，之后使用 `Ctrl +C` 退出并结束。因为后续在代码助手的交互场景，只需要有 “OpenAI 兼容 API” 的服务即可。接下来，无论是使用诸如 [zellij](https://github.com/zellij-org/zellij) 之类的终端分屏器或者打开两个标签页的方式，**分别以仅服务器模式启动两个模型**，如果遵循上面的假设存放路径的话，那么完整的命令为：
 
 ```
 $HOME/bin/llamafile -m $HOME/gguf/qwen2.5-coder-7b-instruct-q5_k_m.gguf -ngl 999 --server --nobrowser --log-disable
@@ -118,7 +118,7 @@ llama server listening at http://127.0.0.1:8080
   },
 ```
 
-类似的，这里依然提示 [Continue.dev](https://github.com/continuedev/continue)以兼容 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 的方式构建 API 请求，但传给运行在 `8081` 端口的 Base 模型。
+类似的，这里依然提示 [Continue.dev](https://github.com/continuedev/continue)以兼容 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 的方式构建 API 请求，但通过额外指定 `apiBase`的方式传给运行在 `8081` 端口的 Base 模型。
 
 ```
 "embeddingsProvider": {
@@ -132,4 +132,4 @@ llama server listening at http://127.0.0.1:8080
 
 接下来保存编辑后的配置文件，此时应该可以看到侧栏中 [Continue.dev](https://github.com/continuedev/continue) 的聊天框中出现了上述设置的 `qwen2.5-coder:7b`的模型名，**至此所有配置完成**，此时可以开始领略在其[官方教程](https://docs.continue.dev/getting-started/overview)中演示到的各种能力了。
 
-后续的使用中，只要通过偏好的快捷脚本或批处理方式分别启动对应 Instruct 和 Base 模型的两个 [Llamafile](https://github.com/Mozilla-Ocho/llamafile)进程，之后就可以**在 IDE 中享受有大语言模型助力的编码时光**了，哪怕没有网络。
+后续的使用中，只要通过偏好的快捷脚本或批处理方式分别启动对应 Instruct 和 Base 模型的两个 [Llamafile](https://github.com/Mozilla-Ocho/llamafile)进程，之后就可以**在 IDE 中享受有大语言模型助力的编码时光**了，哪怕前往渡假地的飞机上没有网络。
