@@ -32,7 +32,7 @@ MENUITEMS_AFTER = (('Comments', '/pages/comments.html'), ('Random', '/random.htm
 GITHUB_SOURCE = 'https://github.com/LinuxTOY/linuxtoy.org/blob/master/content'
 
 DISQUS_SITENAME = 'linuxtoy'
-GOOGLE_ANALYTICS = 'UA-349050-2'
+GOOGLE_ANALYTICS = 'G-MSX3ZMTV47'
 SWIFTYPE = 'zWjtxRdA6ciZ7LBm4R4K'
 TWITTER_NAME = '@linuxtoy'
 
