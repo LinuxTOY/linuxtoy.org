@@ -21,20 +21,28 @@ Authors: lovenemesis
 
 由于我们接下来用于代码助手领域的大语言的模型并未预先封装，所以我们只需要下载最新的 `llamafile` 文件用作运行时环境即可：
 
-1. 前往[项目发布页面](https://github.com/Mozilla-Ocho/llamafile/releases)，下载最新发布版本 `Assets` 中的 `llamafile-X.X.X`文件，本文撰写时为 `llamafile-0.8.17`
-2. 将下载好的文件放到任意一个自己觉得合适的位置，比如 `mv -v llamafile-0.8.16 $HOME/bin/llamafile`
-3. 赋予其可执行权限，比如 `chmod +x $HOME/bin/llamafile`
+1. 前往[项目发布页面](https://github.com/Mozilla-Ocho/llamafile/releases)，下载最新发布版本 `Assets` 中的 `llamafile-X.X.X`文件，本文撰写时为 `llamafile-0.9.0`
+2. 将下载好的文件放到合适的位置: 
+```
+mv -v llamafile-0.9.0 $HOME/bin/llamafile
+```
+
+3. 赋予其可执行权限:
+```
+chmod +x $HOME/bin/llamafile
+```
 4. 如果是 Windows 系统，记得为其添加上 `.exe` 的后缀名
 
 ## 模型文件: Qwen2.5-coder
 
 有了运行时环境，接下来就需要 LLM 的模型文件本身了。本文撰写时，专注于代码生成领域相对较新的开源的 LLM 是 [Qwen2.5-coder](https://qwen2.org/qwen2-5-coder/)，支持 92 种编程语言和中英两种自然语言，其 7B 版本提供了接近 GPT3.5-Turbo 的性能，而 32B 则更是比肩 GPT4o。
 
-大语言模型文件以多种格式分发，隶属于 [llama.cpp](https://github.com/ggerganov/llama.cpp) 家族的 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 需要配合 `GGUF` 格式使用。同时受限于本地设备的性能和显存，需要选择体积较小的量化后版本。结合上述限制，再依据代码助手的使用场景，**需要搭配使用两种训练风格的模型文件**：
+大语言模型文件以多种格式分发，隶属于 [llama.cpp](https://github.com/ggerganov/llama.cpp) 家族的 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 需要配合 GGUF 格式使用。同时受限于本地设备的性能和显存，需要选择体积较小的量化后版本。结合上述限制，再依据代码助手的使用场景，**需要搭配使用两种训练风格的模型文件**：
 
 *  Instruct 风格适合对于自然语言指令的理解并将据此生成代码：[通义千问2.5-代码-7B-Instruct-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF/resolve/master/qwen2.5-coder-7b-instruct-q5_k_m.gguf)（显存少于 12G）或[通义千问2.5-代码-14B-Instruct-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/master/qwen2.5-coder-14b-instruct-q5_k_m.gguf)（显存大于或等于 12G）
-* Base 风格适合根据上下文代码或文字做自动补充：[Qwen2.5-Coder-1.5B-GGUF](https://www.modelscope.cn/models/QuantFactory/Qwen2.5-Coder-1.5B-GGUF/resolve/master/Qwen2.5-Coder-1.5B.Q5_K_M.gguf)（显存少于 12G）或[Qwen2.5-Coder-7B-GGUF](https://www.modelscope.cn/models/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/master/qwen2.5-coder-14b-instruct-q5_k_m.gguf)（显存大于或等于 12G）
-    
+* Base 风格适合根据上下文代码或文字做自动补充：[Qwen2.5-Coder-1.5B-GGUF](https://www.modelscope.cn/models/QuantFactory/Qwen2.5-Coder-1.5B-GGUF/resolve/master/Qwen2.5-Coder-1.5B.Q5_K_M.gguf)（显存少于 12G）或[Qwen2.5-Coder-7B-GGUF](https://www.modelscope.cn/models/QuantFactory/Qwen2.5-Coder-7B-GGUF/resolve/master/Qwen2.5-Coder-7B.Q5_K_M.gguf)（显存大于或等于 12G）
+
+
 模型文件较大，下载完成需要一定的时间，之后将其挪动到任意一个自己觉得合适的位置，比如 `$HOME/gguf`。后续以显存少于 12G 的模型示例，若显存充裕请自行替换相应模型名称即可。
 
 ## 使用 Llamafile 调用 Qwen2.5-Coder
@@ -44,22 +52,23 @@ Authors: lovenemesis
 ```
 $ llamafile -m qwen2.5-coder-7b-instruct-q5_k_m.gguf -ngl 999 --log-disable
 ```
+
 参数解析：
+
 * `-m` 指定了加载的模型 gguf 文件名
-* `-ngl 999` 代表尽可能的将所有模型文件中的层数加载到显存中
+* `-ngl 999` 代表尽可能的将模型文件中的 GPU 层数加载到显存中
 * `--log-disable` 代表禁用在运行目录写入持久性日志文件
 
 ```
-software: llamafile 0.8.17
+software: llamafile 0.9.0
 model:    qwen2.5-coder-7b-instruct-q5_k_m.gguf
 compute:  AMD Radeon 780M
 server:   http://127.0.0.1:8080/
-
 A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.
 >>>
 ```
 
-若能看到类似上文的终端聊天界面，代表运行成功。其中 `computer` 部分指示了用于推理的设备，如果匹配自己的 GPU 型号便代表 GPU 推理加速正确启用，同时也能看到它在本地启用了一个监听 `8080`端口 的服务，可供使用 “OpenAI” 兼容 API 的接口第三方应用调用。
+若能看到类似上文的终端聊天界面，代表运行成功。其中 `computer` 部分指示了用于推理的设备，如果匹配自己的 GPU 型号便代表 GPU 推理加速正确启用，同时也能看到它在本地启用了一个监听 `8080`端口 的服务，可供使用 “OpenAI 兼容 API” 的接口第三方应用调用。
 
 上述的指令便足以在使用最新内核的 Fedora 41 上的调用 AMD 7000 系列显卡实现推理加速。若是上述指令显示的是使用 CPU 加速，可能需要根据配置和操作系统不同设定 `HSA_OVERRIDE_GFX_VERSION` 环境变量或者额外传入 `--nocompile` 参数，可以参考 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) 的项目首页进一步获知，在此不再赘述。
 
