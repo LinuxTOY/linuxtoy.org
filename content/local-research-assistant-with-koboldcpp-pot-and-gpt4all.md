@@ -11,7 +11,7 @@ Authors: lovenemesis
 
 [Koboldcpp](https://github.com/LostRuins/koboldcpp) 是基于知名 LLM 推理引擎 [llama.cpp](https://github.com/ggerganov/llama.cpp) 的外围封装，提供了多种灵活的运行方式。相比于其他流行的本地 LLM 部署方式（比如 [ollama](https://github.com/ollama/ollama) 以及本站之前介绍过的 [Llamafile](https://github.com/Mozilla-Ocho/llamafile) ），Koboldcpp 的优势有：
 
-* 较为紧密的**跟进上游项目的进展**，后端和模型支持很及时
+* 及时地**跟进上游项目的进展**，在后端和模型支持方面很完备
 * 本身**无需安装**即可直接运行，无需处理繁复的依赖关系
 * **内建通用性极佳的 Vulkan GPU 加速后端 **，不强制依赖专用显存，非常适用于仅具备核显和极少显存的办公轻薄本
 * 除了自家的 Kobold AI 接口，也提供**兼容于 OpenAI 和 Ollama 接口服务**，无缝衔接各类第三方 AI 应用
@@ -45,7 +45,7 @@ chmod +x $HOME/bin/koboldcpp
 ```
 $HOME/bin/koboldcpp
 ***
-Welcome to KoboldCpp - Version 1.83.1
+Welcome to KoboldCpp - Version 1.86.2
 For command line arguments, please refer to --help
 ***
 Unable to detect VRAM, please set layers manually.
@@ -57,7 +57,7 @@ Auto Selected Default Backend...
 * "Presets" 选择 "Use Vulkan""
 * "GPU layers" 默认的 "-1" 代表根据侦测到的可用显存将模型加载到显存中，进一步提升推理速度，也可以根据实际应用场景自行指定，这里的两款 7B 模型至多 29 层
 * "GGUF Text Model": 选择上面下载的其中任意一个 GGUF 模型文件
-* 适当的将 "Context Size"" 调整至 "8192"
+* 适当的将 "Context Size"" 调整至 "12288"
 
 之后点击 "Launch"，便可以启动其内建名为 “Kobold Lite” 的图形界面。从 1.83 版本起它已经可以根据加载 GGUF 模型里包含的信息自动应用匹配的聊天模板了，但对于包含深度推理的 DeepSeek 模型来说，模板里默认的单次 512 的输出量明显不够用，需要调整一下：
 
@@ -79,47 +79,18 @@ Auto Selected Default Backend...
 * `--skiplauncher` ： 略过 Launcher 启动器
 * `--quiet` : 避免在命令行终端打印输入提示词和生成的结果
 * `--contextsize` ： 指定更大的上下文窗口
+* `--defaultgenamt` ： 单次生成的内容量上限，注意不能超过前一个上下文窗口的配置
 
-而对于 Kobold Lite 里 "Max Output" 的配置，根据官网的说明和与项目作者的沟通，需要在聊天模板的层面指定，再通过 `--chatcompletionsadapter` 参数指定调整后的聊天模板。
-
-参考项目源代码的自动识别模板，适用于 DeepSeek R1 的聊天模板如下：
-
-```
-{
-  "system_start": "",
-  "system_end": "",
-  "user_start": "<｜User｜>",
-  "user_end": "",
-  "assistant_start": "<｜Assistant｜>",
-  "assistant_end": "<｜end▁of▁sentence｜>",
-  "max_length": 2048
-}
-```
-注意最后增加的 "max_length" 参数，然后将其保存为 `$HOME/gguf/deepseek-maxlength.json` 以被调用。于是完整的命令行为：
+于是相对应之前 DeepSeek-R1 的图形化界面配置的命令版本为：
 
 ```
-$HOME/bin/koboldcpp --model $HOME/gguf/DeepSeek-R1-Distill-Qwen-7B-Q5_K_M.gguf --usevulkan --gpulayers -1 --skiplauncher --quiet --contextsize 12288 --chatcompletionsadapter $HOME/gguf/deepseek-maxlength.json
+$HOME/bin/koboldcpp --model $HOME/gguf/DeepSeek-R1-Distill-Qwen-7B-Q5_K_M.gguf --usevulkan --gpulayers -1 --skiplauncher --quiet --contextsize 12288 --defaultgenamt 2048
 ```
 
-类似的，Qwen2.5 的聊天模板附加 "max_length" 参数后为：
+类似的，Qwen2.5 的命令行唤起方式则为：
 
 ```
-{
-        "system_start": "<|im_start|>system\n\n",
-        "system_end": "<|im_end|>\n\n",
-        "user_start": "<|im_start|>user\n\n",
-        "user_end": "<|im_end|>\n\n",
-        "assistant_start": "<|im_start|>assistant\n\n",
-        "assistant_end": "<|im_end|>\n\n",
-        "tools_start": "\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n\n<tools>\n",
-        "tools_end": "\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call><|im_end|>\n",
-        "max_length": 2048
-}
-```
-保存为 `$HOME/gguf/qwen2-maxlength.json`，相应的命令行唤起方式则为：
-
-```
-$HOME/bin/koboldcpp --model $HOME/gguf/qwen2.5-7b-instruct-q5_k_m.gguf --usevulkan --gpulayers -1 --skiplauncher --quiet --contextsize 12288 --chatcompletionsadapter $HOME/gguf/qwen2-maxlength.json
+$HOME/bin/koboldcpp --model $HOME/gguf/qwen2.5-7b-instruct-q5_k_m.gguf --usevulkan --gpulayers -1 --skiplauncher --quiet --contextsize 12288 --defaultgenamt 2048
 ```
 
 之后将上述命令放置入偏好的终端脚本或批处理文件中保存即可。后续当运行这个脚本或者批处理文件的时候，Koboldcpp 将在后台以进程方式且不在浏览器打开 Kobold Lite，但在 `http://localhost:5001` 上提供其他应用访问的 KoboldAI、OpenAI 和 Ollama 三种风格 API。如需退出，关闭终端终端窗口即可。
